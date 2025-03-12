@@ -543,9 +543,19 @@ We analysed the classification performance of both GIP and GPA models when re-tr
 The analysis shows that the GIP is highly affected by the presence of the deep features in the privacy nodes and only using the deep features from the objects might be sufficient, and using the node type in the feature vectors is relevant for the model.
 GPA degenerates to predict only the public class when pre-training and fixing the parameters of the scene-to-privacy layer, and when correcting the implementation of the adjacency matrix wrongly initialised in the original implementation of GPA. Best performance are achieved by the GPA variant with the bipartite prior graph, pre-trained re-shape layer, and use of the reshape layer. 
 
-These results are discussed in Sec.6.7 and presented in Table 3 and Table 4 of the article.
+These results are discussed in Sec.6.7 (Relative impacts on image privacy) and presented in Table 3 and Table 4 of the article.
 
-#### Main Result 3: Comparative analysis with other prior works
+#### Main Result 3: Comparative analysis with other related works
+
+We compare the classification results of S2P with those of four related works using transfer learning, CNNs, and other classifiers (e.g., Support Vector Machine or SVM): Image Tags + SVM, Top-10 Scene Tags + SVM, a scene classifier coupled with SVM (ResNet50 + SVM), and a finetuning of the scene classifier (ResNet50-FT).
+ResNet50 + SVM achieves the best recall on the private class (81.42\% on IPD and 79.78\% on PrivacyAlert) and the best balanced accuracy (83.08\% on IPD and 78.48\% on PrivacyAlert). Given the small size of the datasets and the features extracted by a pre-trained CNN, the good performance of SVM are expected. However, scaling to larger dataset size is a known drawback of this model to consider.
+
+#### Main Result 4: Using a 1-layer MLP is better than using a single fully connected layer as privacy classifier coupled with a pre-trained scene classifier
+
+We compared S2P with 2 variants that replace the fully connected layer of S2P with a 1-layer MLP and 2-layer MLP, respectively, where 1-layer means the number of hidden layers.
+The increasing number of parameters optimised for privacy by the variants of S2P allows the model to improve the classification performance compared to S2P, especially in terms of recall of the private class and balanced accuracy on both datasets, and achieve performance more comparable to ResNet-50 with SVM. However, increasing from 1 to 2 hidden layers provides a minimal overall improvement and an increase in false positives towards predicting images as private.
+
+These results are discussed in Sec.6.7 (Relative impacts on image privacy) and presented in Table 3 and Table 4 of the article.
 
 Describe the results in 1 to 3 sentences.
 Refer to the related sections in your paper and reference the experiments that support this result/claim.
