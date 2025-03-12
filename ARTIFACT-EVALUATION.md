@@ -468,7 +468,64 @@ python -m pip install ultralytics
 
 ### Testing the Environment <a name="testing-environment"></a>
 
-No available tests in the current status of the repository.
+No specific tests currently available.
+
+We provide bash scripts in the folder ``scripts/`` that other researchers can use to run the training and testing pipeline for each model, and evaluate the results. 
+
+<details>
+<summary> Show instructions to run script for S2P as example </summary>
+
+Follow these instructions to run the script. 
+
+1. Modify the bash script ``scripts/run_s2p.sh`` with your own variables and settings:
+    1. Set ``IMAGEPRIVACY_DIR`` with your directory to the image privacy datasets
+    2. Choose the dataset for the variable ``DATASET`` (either PrivacyAlert or IPD)
+    3. Set the variable ``TRAINING_MODE`` based on the chosen dataset (original for PrivacyAlert, crossval for IPD)
+    4. Change the name of conda environment based on the one created. Check if the command conda or source needs to be used within your machine
+    5. Comment/uncomment the pipelines (python scripts) to execute: training, testing of the best selected model, testing of the model saved at the last epoch, evaluation of the best model, evaluation of the model saved at the last epoch
+2. Open the terminal in the parent working directory and run the bash script, for example: ``source scripts/run_s2p.sh``
+
+The script will automatically execute the pipelines and save a backup ZIP archive in the directory ``backups/``. The ZIP file archives all the files related to the trained model (e.g., .pth file with the weights, logs of the training loss, plots of the training curves, etc.), the config file with the settings of the model and training, the prediction results, and the computed performance scores. 
+
+Segment for the training pipeline:
+```bash
+# Make sure to run the pipeline within the created conda environment
+conda activate graphnex-gnn
+
+# Run the training pipeline
+python srcs/main.py                       \  #
+   --root_dir              $ROOT_DIR      \  # The parent folder of this repository
+   --dataset               $DATASET       \  # Name of the dataset (e.g., IPD, PrivacyAlert)
+   --config                $CONFIG_FILE   \  # Path to the config file and filename (contains the model name)
+   --training_mode         $TRAINING_MODE \  # The selected training mode based on the dataset
+   --mode                  "training"       # For training the model this is fixed
+   # --weight_loss  # To enable the use of the weighted cross-entropy loss (Default: disabled)
+   # --use_bce      # To enable the use of the binary cross-entropy loss (Default:disabled)
+   # --resume       # To enable the resuming of the model training from last saved epoch (Default: disabled)
+
+conda deactivate
+```
+
+Segment for the testing pipeline:
+```bash
+# Make sure to run the pipeline within the created conda environment
+conda activate graphnex-gnn
+
+# Run the training pipeline
+python srcs/main.py                       \  #
+   --root_dir              $ROOT_DIR      \  # The parent folder of this repository
+   --dataset               $DATASET       \  # Name of the dataset (e.g., IPD, PrivacyAlert)
+   --config                $CONFIG_FILE   \  # Path to the config file and filename (contains the model name)
+   --training_mode         $TRAINING_MODE \  # The selected training mode based on the dataset
+   --mode                  "testing"      \  # For testing the model this is fixed
+   --split_mode            "test"         \  # What data split to test (e.g., train, val, test)
+   --model_mode            "best"            # What mode to use for testing: best model based on early stop and validation split (best), or the model saved at the last epoch (last)
+
+
+conda deactivate
+```
+
+</details>
 
 ## Artifact Evaluation <a name="evaluation"></a> 
 
