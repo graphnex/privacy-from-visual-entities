@@ -560,11 +560,6 @@ The increasing number of parameters optimised for privacy by the variants of S2P
 These results are discussed in Appendix C and presented in Table 7.
 
 ### Experiments <a name="experiments"></a>
-List each experiment the reviewer has to execute. Describe:
- - How to execute it in detailed steps.
- - What the expected result is.
- - How long it takes and how much space it consumes on disk. (approximately)
- - Which claim and results does it support, and how.
 
 These experiments simply reproduce the results reported in the article using the already trained models. For each experiment, we provide one bash script that can be run to reproduce the results. We do not include details on how to reproduce the training of the models and reviewers are not asked to run the training pipeline of the models.
 
@@ -592,7 +587,7 @@ This experiment supports the claims in the Main Results 2.
 
 This experiment reproduces the results presented in Table 4 of the article, Sec.6.7 (Relative impacts on image privacy), using the various GIP models (see corresponding table in [Trained Models](#trained-models) for downloading each model). We provide a bash script that unzips the archive of each GIP model and runs each model on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment2.csv``. The latter file allows to verify the results of the experiment as reported in Table 4, except for the rows of results taken from the GIP paper.
 
-Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
+The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
 1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment2.sh`` by placing the path to the folder where you downloaded the datasets.  

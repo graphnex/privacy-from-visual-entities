@@ -4,8 +4,8 @@
 # Authors: 
 # - Alessio Xompero, a.xompero@qmul.ac.uk
 #
-#  Created Date: 2025/03/10
-# Modified Date: 2025/03/10
+#  Created Date: 2025/03/12
+# Modified Date: 2025/03/12
 #
 ##############################################################################
 
@@ -32,20 +32,17 @@ DATASET_low="${DATASET,,}"    # convert string to lowercase
 #              is trained using all training data.
 TRAINING_MODE='original' # crossval, final, original
 
-OUTFILENAME=res_experiment2.csv
+OUTFILENAME=res_experiment1.csv
 
-MODEL_NAME=gpa
+MODEL_NAME=gip
 MODEL_NAME_b=$MODEL_NAME
 echo $MODEL_NAME
 
-# Unzip the S2P model used by GPA
-unzip backups/s2p_${DATASET}_v1.0.0.zip trained_models/$DATASET_low/2-class/s2p/*
-
-for M in {0..8}
+for M in {0..5}
 do
    unzip backups/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
 
-   CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}/${MODEL_NAME}_v1.$M.json
+   CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}/${MODEL_NAME}_v2.$M.json
    #
    # Activate the conda environment
    source activate graphnex-gnn
@@ -69,8 +66,6 @@ do
 
    echo $MODEL_NAME + " model evaluated!"
 done
-
-rm -r trained_models/$DATASET_low/2-class/s2p
 
 
 #####################################################################
@@ -85,13 +80,11 @@ DATASET_low="${DATASET,,}"    # convert string to lowercase
 #              is trained using all training data.
 TRAINING_MODE='crossval' # crossval, final, original
 
-unzip backups/s2p_${DATASET}_v1.0.0.zip trained_models/$DATASET_low/2-class/s2p/*
-
-for M in {0..8}
+for M in {0..5}
 do
    unzip backups/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
 
-   CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}/${MODEL_NAME}_v1.$M.json
+   CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}/${MODEL_NAME}_v2.$M.json
    #
    # Activate the conda environment
    source activate graphnex-gnn
@@ -115,5 +108,3 @@ do
 
    echo $MODEL_NAME + " model evaluated!"
 done
-
-rm -r trained_models/$DATASET_low/2-class/s2p
