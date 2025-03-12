@@ -2,7 +2,7 @@
 
 Official source code of the article *Learning Privacy from Visual Entities* accepted at *Privacy Enhancing Technologies Symposium* (PETS) 2025 and published in the journal *Proceedings on Privacy Enhancing Technologies* (PoPETs), Volume 2025, Issue 3, 2025 (to appear). 
 
-Details on this repository can be found in (ARTIFACT-EVALUATION)[ARTIFACT-EVALUATION.md] (especially for artifact reviewers).
+Details on this repository can be found in [ARTIFACT-EVALUATION](ARTIFACT-EVALUATION.md) (especially for artifact reviewers).
 
 ## Contributing <a name="contributing"></a>
 
@@ -45,4 +45,4 @@ A. Xompero, A. Cavallaro, Learning Privacy from Visual Entities, Proceedings on 
 
 ## License
 
-The software is licensed under the GNU General Public License v3 (GNU GPLv3). See (LICENSE)[LICENSE.md] for details.
+The software is licensed under the GNU General Public License v3 (GNU GPLv3). See [LICENSE](LICENSE.md) for details.
