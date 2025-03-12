@@ -329,11 +329,14 @@ Models can be extracted in the folder ``trained_models`` and then used within th
 </details>
 
 
-
 ### Estimated Time and Storage Consumption <a name="time-storage"></a>
-Provide an estimated value for the time the evaluation will take and the space on the disk it will consume. 
-This helps reviewers to schedule the evaluation in their time plan and to see if everything is running as intended.
-More specifically, a reviewer, who knows that the evaluation might take 10 hours, does not expect an error if, after 1 hour, the computer is still calculating things.
+
+Storing the datasets, the repository, the precomputed visual entities and graph data, and the trained models can approximately occupy 120 GB. 
+
+As obtaining and reproducing the datasets from public urls is not trivial (see also [Limitations](#limitations)), providing an estimated time is also not straightforward.
+
+Excluding the preparation of the datasets and the GIP model (largest deep learning model, whose archive file occupies approximately 3.8 GB) that runs with a batch size of maximum 2 in our machine (slow inference time), 
+inference of other models on the testing sets of IPD and PrivacyAlert to reproduce the results of the article is expected to take approximately 5-6 hours.
 
 ## Environment <a name="environment"></a>
 In the following, describe how to access our artifact and all related and necessary data and software components.
