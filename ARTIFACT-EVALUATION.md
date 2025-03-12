@@ -214,13 +214,13 @@ For each dataset, we also provide the pre-computed adjacency matrix for the grap
 
 **Note**: IPD is based on PicAlert and VISPR and therefore IPD refers to the scene probabilities and object detections of the other two datasets. Both PicAlert and VISPR must be downloaded and prepared to use IPD for training and testing. 
 
-The table below provides the link to the archive file for each dataset and each visual entity type.
+The table below provides the link to the archive file for each dataset and each visual entity type. Links are temporarily stored at a personal public institutional web site and ZIP files will be uploaded in a Zenodo record for long-term preservation.
 
 | Type | PicAlert | VISPR | PrivacyAlert | IPD |
 |------|----------|-------|--------------|-----|
-| Scenes | [link]() | [link]() | [link]() | N/A |
-| Objects | [link]() | [link]() | [link]() | N/A |
-| Graph data | [link]() | [link]() | [link]() | [link]() |
+| Scenes | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip) (105 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip) (82 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip) (26 MB) | N/A |
+| Objects | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip) (10 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip) (8 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip) (3 MB) | N/A |
+| Graph data | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip) (9 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip) (7 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip) (3 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip) (22 KB) |
 
 These files should be unzipped in the folder ``/resources/`` and follow the structure below.
 
@@ -304,6 +304,40 @@ These files should be unzipped in the folder ``/resources/`` and follow the stru
 ```
 
 </details>
+
+Example of bash code to download the ZIP files of the visual entities and unzip them in the folder ``resources/``. 
+The following lines are expected to be run from the repository working directory.
+
+```bash
+# Download and extract the scene probabilities for each dataset
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip
+
+unzip scenes_picalert.zip -d resources/
+unzip scenes_VISPR.zip -d resources/
+unzip scenes_privacyalert.zip -d resources/
+
+# Download and extract the detected objects for each dataset
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip
+
+unzip objects_picalert.zip -d resources/
+unzip objects_VISPR.zip -d resources/
+unzip objects_privacyalert.zip -d resources/
+
+# Download and extract the pre-computed graph data for each dataset
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip
+
+unzip graphdata_picalert.zip -d resources/
+unzip graphdata_VISPR.zip -d resources/
+unzip graphdata_privacyalert.zip -d resources/
+unzip graphdata_IPD.zip -d resources/
+```
 
 ### Trained models <a name="trained-models"></a>
 
