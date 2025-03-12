@@ -14,8 +14,9 @@ Requested Badge: **Functional and Available**
     1. [Hardware Requirements](#hardware-requirements)
     2. [Software Requirements](#software-requirements)
     3. [Curated image privacy data sets](#datasets)
-    4. [Trained models](#trained-models)
-    5. [Estimated Time and Storage Consumption](#time-storage)
+    4. [Pre-computed visual entitities](#data-visual-entities)
+    5. [Trained models](#trained-models)
+    6. [Estimated Time and Storage Consumption](#time-storage)
 3. [Environment](#environment)
     1. [Accessibility](#accessibility)
     2. [Set up the environment](#set-up-environment)
@@ -91,7 +92,7 @@ For PicAlert and PrivacyAlert, only urls to the original locations in Flickr are
 
 **Disclaimer**: The datasets are originally provided by other sources and have been re-organised and curated for this work. Similar to the original datasets (PicAlert and PrivacyAlert), we provide the link to the images in the download scripts, however running the scripts can incur in the "429 Too Many Requests" status code. This makes the datasets hard to obtain from the original Flickr location, and thus impacting the testing of the reproducibility of the experiments. Moreover, owners of the photos on Flick could have removed the photos from the social media platform, resulting in less images than those used for training and testing the models in the article. This means that other researchers will need to privately request the current version of the datasets as used in the article to reproduce the results or make fair comparisons.
 
-**Note**: Following links to the curated image privacy data sets will be updated with the corresponding Zenodo links once the archives are uploaded in a Zenodo repository/record.
+**Note**: Following links to the curated image privacy data sets will be updated with the corresponding Zenodo links once the archives are uploaded in a Zenodo repository/record to comply with FAIR principles and Open Research.
 
 <details>
 <summary> Show details and instructions </summary>
@@ -303,7 +304,7 @@ These files should be unzipped in the folder ``/resources/`` and follow this str
 This section includes the link to a zip file related to each model trained in the article. 
 Models can be extracted in the folder ``trained_models`` and then used within the testing pipeline to obtain the predictions on the testing sets of the datasets avoiding to re-train the model for scratch.
 
-**Disclaimer** Trained models are not yet available and under preparation for release on a Zenodo record (empty links).
+**Disclaimer** Trained models are not yet available (empty links) and under preparation for release on a Zenodo record to comply with FAIR principles and Open Research.
 
 <details>
 <summary> Show table of models and links for GIP and GPA analysis (Section 6.7, Tables 3 and 4) </summary>
@@ -535,10 +536,20 @@ The datasets are originally provided by other sources and have been re-organised
 The software was designed and developed to also favour reproducibility of the training pipeline of the various models. However, also including the reproducibility of training of the various models is time-consuming during the review process (especially for large models such as GIP). 
 
 ## Notes on Reusability <a name="reusability"></a>
-First, this section might not apply to your artifacts.
-Use it to share information on how your artifact can be used beyond your research paper, e.g., as a general framework.
-The overall goal of artifact evaluation is not only to reproduce and verify your research but also to help other researchers to re-use and improve on your artifacts.
-Please describe how your artifacts can be adapted to other settings, e.g., more input dimensions, other datasets, and other behavior, through replacing individual modules and functionality or running more iterations of a specific part.
 
+This artifact (source code) is a general framework that contains:
+* pipelines for training and testing models on publicly available datasets for image privacy (pipelines are modular and depend on the input information, e.g., only image or graph data); 
+* module that loads image privacy datasets with a unified format based on our curation and adapted for either type of input information;
+* toolkit to evaluate the model predictions with respect to the datasets annotations as a binary classification task;
+* module loading multiple models in an agnostic way to the pipelines.
 
-Trained models are currently provided from an institutional link for the review process, given the short amount of time to prepare the submission of the artifact. We will upload the trained models and the source files to obtain the datasets and processed graph data in a Zenodo repository to comply with FAIR principle and Open Research by the end of the review process of the artifact. 
+Other researchers can:
+* reuse the full framework to re-train and evaluate the already provided models based on our configurations (see ``configs/*``);
+* train and evaluate the models with new configurations for comparison and optimisation by creating customised config files;
+* add, train, and test new models to the framework (see ``srcs/nets/*.py`` and ``srcs/load_net.py``);
+* add new datasets following the format of the curated datasets and corresponding loading modules (see for example ``srcs/datasets/imageprivacy.py``, ``srcs/datasets/privacyalert_graph.py``, ``srcs/datasets/wrapper_imgs.py``, ``srcs/datasets/wrapper.py``);
+* extend the framework to multi-class classification and evaluation.
+
+Overall, the framework can enable a common and standard benchmark for image privacy classification. 
+
+We might include further documentation on how to add new datasets, models, and components upon community requests.
