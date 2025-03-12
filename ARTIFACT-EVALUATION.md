@@ -222,7 +222,11 @@ The table below provides the link to the archive file for each dataset and each 
 | Objects | [link]() | [link]() | [link]() | N/A |
 | Graph data | [link]() | [link]() | [link]() | [link]() |
 
-These files should be unzipped in the folder ``/resources/`` and follow this structure:
+These files should be unzipped in the folder ``/resources/`` and follow the structure below.
+
+<details>
+<summary> Show structure </summary>
+
 ```
 . # resources/
 |--IPD
@@ -298,6 +302,8 @@ These files should be unzipped in the folder ``/resources/`` and follow this str
 |                   |--- ...
 |-- ...
 ```
+
+</details>
 
 ### Trained models <a name="trained-models"></a>
 
@@ -469,12 +475,16 @@ No available tests in the current status of the repository.
 ### Main Results and Claims <a name="results-claims"></a> 
 List all your paper's results and claims that are supported by your submitted artifacts.
 
-#### Main Result 1: Name
-Describe the results in 1 to 3 sentences.
-Refer to the related sections in your paper and reference the experiments that support this result/claim.
+#### Main Result 1: Relative impacts on image privacy
+
+We analysed the classification performance of both GIP and GPA models when re-trained with different training strategies and different design choices to better understand the relative contribution of their individual components. The analysis shows that
+the GIP is highly affected by the presence of the deep features in the privacy nodes and only using the deep features from the objects might be sufficient, and using the node type in the feature vectors is relevant for the model.
+
+These results are discussed in Sec.6.7 and presented in Table 3 and Table 4 of the article. 
 
 #### Main Result 2: Name
-...
+Describe the results in 1 to 3 sentences.
+Refer to the related sections in your paper and reference the experiments that support this result/claim.
 
 ### Experiments <a name="experiments"></a>
 List each experiment the reviewer has to execute. Describe:
