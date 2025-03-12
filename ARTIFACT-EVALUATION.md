@@ -47,7 +47,7 @@ We expect the software to successfully run on a machine/workstation with similar
 
 ### Software Requirements <a name="software-requirements"></a>
 
-The software was run on a Linux-based machine (CentOS 6).
+The software was run on a Linux-based machine (CentOS Linux release 7.7.1908).
 
 <details>
 <summary> Show packages </summary><br>
