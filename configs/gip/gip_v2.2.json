@@ -1,0 +1,49 @@
+{
+    "model_name" : "gip",
+    "net_name" : "GIP",
+    "num_workers" : 6,
+    "b_filter_imgs" : false,
+    
+    "params": {
+        "seed": 789,
+        "max_num_epochs": 1000,
+        "batch_size_train": 2,
+        "batch_size_val": 2,
+        "batch_size" : 2,
+        "optimizer" : "Adam",
+        "init_lr": 0.001,
+        "lr_reduce_factor": 0.5,
+        "lr_schedule_patience": 10,
+        "min_lr": 1e-5,
+        "max_lr": 0.1,
+        "weight_decay": 0.0,
+        "momentum" : 0.9,
+        "max_time": 72,
+        "training_mode" : "crossval",
+        "fold_id" : 0,
+        "measure" : "balanced_accuracy",
+        "use_bce" : false,
+        "resume" : false
+    },
+    
+    "net_params": {
+        "num_out_classes" : 2,
+        "node_feat_size" : 4096,
+        "hidden_dim": 1,
+        "num_obj_cat" : 80,
+        "n_graph_nodes" : 82,
+        "ggnn_output_channel" : 512,
+        "max_num_rois" : 50,
+        "time_step" : 3,
+        "use_attention" : true,
+        "graph_type" : "obj-only",
+        "prior_graph_thresh": 0,
+        "class_feats" : "zeros",
+        "img_size" : 448,
+        "self_loop" : false,
+        "vgg_fixed" : true,
+        "rn_fixed" : true,
+        "use_flag" : true,
+        "use_class_nodes": true
+    }    
+}

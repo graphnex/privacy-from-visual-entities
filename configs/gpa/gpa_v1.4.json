@@ -1,0 +1,51 @@
+{
+    "model_name" : "gpa",
+    "net_name" : "GPA",
+    "num_workers" : 6,
+    "b_filter_imgs" : false,
+    
+    "params": {
+        "seed": 789,
+        "max_num_epochs": 1000,
+        "batch_size_train": 100,
+        "batch_size_val": 100,
+        "batch_size" : 100,
+        "optimizer" : "Adam",
+        "init_lr": 0.001,
+        "lr_reduce_factor": 0.5,
+        "lr_schedule_patience": 10,
+        "min_lr": 1e-5,
+        "max_lr": 0.1,
+        "weight_decay": 0.0,
+        "momentum" : 0.9,
+        "max_time": 12,
+        "training_mode" : "crossval",
+        "fold_id" : 0,
+        "measure" : "balanced_accuracy",
+        "use_bce" : false,
+        "resume" : false
+    },
+    
+    "net_params": {
+        "num_out_classes" : 2,
+        "node_feat_size" : 1,
+        "use_flag" : false,
+        "hidden_dim": 1,
+        "num_obj_cat" : 80,
+        "n_graph_nodes" : 82,
+        "ggnn_hidden_channel" : 2,
+        "ggnn_output_channel" : 2,
+        "max_num_rois" : 50,
+        "time_step" : 3,  
+        "use_attention" : true,      
+        "graph_type" : "obj-only",
+        "use_class_nodes": true,
+        "use_card" : true,
+        "use_conf" : false,
+        "self_loop" : false,
+        "prior_graph_thresh": 0,
+        "reshape_layer" : false,
+        "s2p_mode" : "pretrained",
+        "mode": 3
+    }    
+}

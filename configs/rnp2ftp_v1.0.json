@@ -1,0 +1,43 @@
+{
+    "model_name" : "rnp2ftp",
+    "net_name" : "RNP2FTP",
+    "num_workers" : 6,
+    "b_filter_imgs" : false,
+    
+    "params": {
+        "seed": 789,
+        "max_num_epochs": 1000,
+        "batch_size_train": 30,
+        "batch_size_val": 30,
+        "batch_size" : 30,
+        "optimizer" : "Adam",
+        "init_lr": 0.001,
+        "lr_reduce_factor": 0.5,
+        "lr_schedule_patience": 10,
+        "min_lr": 1e-5,
+        "max_lr": 0.1,
+        "weight_decay": 0.0,
+        "momentum" : 0.9,
+        "max_time": 12,
+        "training_mode" : "crossval",
+        "fold_id" : 0,
+        "measure" : "balanced_accuracy",
+        "use_bce" : false,
+        "weight_loss" : false,
+        "resume" : false
+    },
+    
+    "net_params": {
+        "num_out_classes" : 2,
+        "num_scene_cat" : 365,
+        "backbone_arch" : "resnet50",
+        "n_graph_nodes" : 365,
+        "node_feat_size" : 1,
+        "img_size" : 448
+    },
+
+    "img_perturbe" : {
+        "perturbation_type" : null,
+        "perturbe_param" : 0
+    }
+}

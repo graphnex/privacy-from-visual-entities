@@ -1,0 +1,25 @@
+{
+    "paths" : {
+        "root_dir" : ".",
+        "data_prefix" : ""
+    },
+
+    "datasets": {
+        "PicAlert" : {
+            "name" : "PicAlert",
+            "data_dir" : "curated_picalert"
+        },
+        "VISPR" : {
+            "name" : "VISPR",
+            "data_dir" : "curated_vispr"
+        },
+        "PrivacyAlert" : {
+            "name" : "PrivacyAlert",
+            "data_dir" : "curated-privacy-alert-dataset"
+        },
+        "IPD" : {
+            "name" : "IPD",
+            "data_dir" : "curated_ipd"
+        }
+    }
+}
