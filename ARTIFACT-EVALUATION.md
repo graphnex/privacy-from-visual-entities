@@ -214,13 +214,13 @@ For each dataset, we also provide the pre-computed adjacency matrix for the grap
 
 **Note**: IPD is based on PicAlert and VISPR and therefore IPD refers to the scene probabilities and object detections of the other two datasets. Both PicAlert and VISPR must be downloaded and prepared to use IPD for training and testing. 
 
-The table below provides the link to the archive file for each dataset and each visual entity type.
+The table below provides the link to the archive file for each dataset and each visual entity type. Links are temporarily stored at a personal public institutional web site and ZIP files will be uploaded in a Zenodo record for long-term preservation.
 
 | Type | PicAlert | VISPR | PrivacyAlert | IPD |
 |------|----------|-------|--------------|-----|
-| Scenes | [link]() | [link]() | [link]() | N/A |
-| Objects | [link]() | [link]() | [link]() | N/A |
-| Graph data | [link]() | [link]() | [link]() | [link]() |
+| Scenes | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip) (105 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip) (82 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip) (26 MB) | N/A |
+| Objects | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip) (10 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip) (8 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip) (3 MB) | N/A |
+| Graph data | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip) (9 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip) (7 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip) (3 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip) (22 KB) |
 
 These files should be unzipped in the folder ``/resources/`` and follow the structure below.
 
@@ -304,6 +304,40 @@ These files should be unzipped in the folder ``/resources/`` and follow the stru
 ```
 
 </details>
+
+Example of bash code to download the ZIP files of the visual entities and unzip them in the folder ``resources/``. 
+The following lines are expected to be run from the repository working directory.
+
+```bash
+# Download and extract the scene probabilities for each dataset
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip
+
+unzip scenes_picalert.zip -d resources/
+unzip scenes_VISPR.zip -d resources/
+unzip scenes_privacyalert.zip -d resources/
+
+# Download and extract the detected objects for each dataset
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip
+
+unzip objects_picalert.zip -d resources/
+unzip objects_VISPR.zip -d resources/
+unzip objects_privacyalert.zip -d resources/
+
+# Download and extract the pre-computed graph data for each dataset
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip
+wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip
+
+unzip graphdata_picalert.zip -d resources/
+unzip graphdata_VISPR.zip -d resources/
+unzip graphdata_privacyalert.zip -d resources/
+unzip graphdata_IPD.zip -d resources/
+```
 
 ### Trained models <a name="trained-models"></a>
 
@@ -441,7 +475,7 @@ Afterward, describe how to set up everything and how to verify that everything i
 
 ### Accessibility <a name="accessibility"></a>
 
-The repository is hosted in GitHub at https://github.com/graphnex/privacy-from-visual-entities (use the most recent commit in the branch main).
+The repository is hosted at https://github.com/graphnex/privacy-from-visual-entities (use the most recent commit in the branch main).
 
 ### Set up the environment <a name="set-up-environment"></a>
 
@@ -468,52 +502,152 @@ python -m pip install ultralytics
 
 ### Testing the Environment <a name="testing-environment"></a>
 
-No available tests in the current status of the repository.
+No specific tests currently available.
+
+We provide bash scripts in the folder ``scripts/`` that other researchers can use to run the training and testing pipeline for each model, and evaluate the results. 
+
+<details>
+<summary> Show instructions to run script for S2P as example </summary>
+
+Follow these instructions to run the script. 
+
+1. Modify the bash script ``scripts/run_s2p.sh`` with your own variables and settings:
+    1. Set ``IMAGEPRIVACY_DIR`` with your directory to the image privacy datasets
+    2. Choose the dataset for the variable ``DATASET`` (either PrivacyAlert or IPD)
+    3. Set the variable ``TRAINING_MODE`` based on the chosen dataset (original for PrivacyAlert, crossval for IPD)
+    4. Change the name of conda environment based on the one created. Check if the command conda or source needs to be used within your machine
+    5. Comment/uncomment the pipelines (python scripts) to execute: training, testing of the best selected model, testing of the model saved at the last epoch, evaluation of the best model, evaluation of the model saved at the last epoch
+2. Open the terminal in the parent working directory and run the bash script, for example: ``source scripts/run_s2p.sh``
+
+The script will automatically execute the pipelines and save a backup ZIP archive in the directory ``backups/``. The ZIP file archives all the files related to the trained model (e.g., .pth file with the weights, logs of the training loss, plots of the training curves, etc.), the config file with the settings of the model and training, the prediction results, and the computed performance scores. 
+
+Segment for the training pipeline:
+```bash
+# Make sure to run the pipeline within the created conda environment
+conda activate graphnex-gnn
+
+# Run the training pipeline
+python srcs/main.py                       \  #
+   --root_dir              $ROOT_DIR      \  # The parent folder of this repository
+   --dataset               $DATASET       \  # Name of the dataset (e.g., IPD, PrivacyAlert)
+   --config                $CONFIG_FILE   \  # Path to the config file and filename (contains the model name)
+   --training_mode         $TRAINING_MODE \  # The selected training mode based on the dataset
+   --mode                  "training"       # For training the model this is fixed
+   # --weight_loss  # To enable the use of the weighted cross-entropy loss (Default: disabled)
+   # --use_bce      # To enable the use of the binary cross-entropy loss (Default:disabled)
+   # --resume       # To enable the resuming of the model training from last saved epoch (Default: disabled)
+
+conda deactivate
+```
+
+Segment for the testing pipeline:
+```bash
+# Make sure to run the pipeline within the created conda environment
+conda activate graphnex-gnn
+
+# Run the training pipeline
+python srcs/main.py                       \  #
+   --root_dir              $ROOT_DIR      \  # The parent folder of this repository
+   --dataset               $DATASET       \  # Name of the dataset (e.g., IPD, PrivacyAlert)
+   --config                $CONFIG_FILE   \  # Path to the config file and filename (contains the model name)
+   --training_mode         $TRAINING_MODE \  # The selected training mode based on the dataset
+   --mode                  "testing"      \  # For testing the model this is fixed
+   --split_mode            "test"         \  # What data split to test (e.g., train, val, test)
+   --model_mode            "best"            # What mode to use for testing: best model based on early stop and validation split (best), or the model saved at the last epoch (last)
+
+
+conda deactivate
+```
+
+</details>
 
 ## Artifact Evaluation <a name="evaluation"></a> 
 
 ### Main Results and Claims <a name="results-claims"></a> 
-List all your paper's results and claims that are supported by your submitted artifacts.
 
-#### Main Result 1: Relative impacts on image privacy
+#### Main Result 1: Using transfer learning from a pre-trained scene classifier is sufficient for achieving best classification performance in image privacy
 
-We analysed the classification performance of both GIP and GPA models when re-trained with different training strategies and different design choices to better understand the relative contribution of their individual components. The analysis shows that
-the GIP is highly affected by the presence of the deep features in the privacy nodes and only using the deep features from the objects might be sufficient, and using the node type in the feature vectors is relevant for the model.
+We perform an in-depth comprative analysis of the classification performance across various models, including GIP, GPA, MLP-I, MLP, GA-MLP, and S2P, and other baselines, on both the IPD and PrivacyAlert datasets. For both datasets, our re-trained GPA and S2P achieve the highest classification results in terms of overall accuracy (>83% on IPD, and >80% in PrivacyAlert) and balanced accuracy (>80% on IPD and >75% in PrivacyAlert). The similar performance between GPA and S2P indicates that using transfer learning from the pre-trained scene classifier is sufficient for achieving such a performance and the impact of graph processing on the results is minimal. 
 
-These results are discussed in Sec.6.7 and presented in Table 3 and Table 4 of the article. 
+The claim is mentioned across the paper, including abstract, introduction, Sec.6.11 (Discussion), and Sec.7 (Conclusion). These results are discussed in Sec.6.9, Table 5, Figure 5, anf Figure 6. 
 
-#### Main Result 2: Name
-Describe the results in 1 to 3 sentences.
-Refer to the related sections in your paper and reference the experiments that support this result/claim.
+#### Main Result 2: Relative impacts of individual model components on image privacy
+
+We analysed the classification performance of both GIP and GPA models when re-trained with different training strategies and different design choices to better understand the relative contribution of their individual components. 
+The analysis shows that the GIP is highly affected by the presence of the deep features in the privacy nodes and only using the deep features from the objects might be sufficient, and using the node type in the feature vectors is relevant for the model.
+GPA degenerates to predict only the public class when pre-training and fixing the parameters of the scene-to-privacy layer, and when correcting the implementation of the adjacency matrix wrongly initialised in the original implementation of GPA. Best performance are achieved by the GPA variant with the bipartite prior graph, pre-trained re-shape layer, and use of the reshape layer. 
+
+These results are discussed in Sec.6.7 (Relative impacts on image privacy) and presented in Table 3 and Table 4 of the article.
+
+#### Main Result 3: Using SVM as a classifier is still a good alternative in these small datasets
+
+We compare the classification results of S2P with those of four related works using transfer learning, CNNs, and other classifiers (e.g., Support Vector Machine or SVM): Image Tags + SVM, Top-10 Scene Tags + SVM, a scene classifier coupled with SVM (ResNet50 + SVM), and a finetuning of the scene classifier (ResNet50-FT).
+ResNet50 + SVM achieves the best recall on the private class (81.42\% on IPD and 79.78\% on PrivacyAlert) and the best balanced accuracy (83.08\% on IPD and 78.48\% on PrivacyAlert). Given the small size of the datasets and the features extracted by a pre-trained CNN, the good performance of SVM are expected. However, scaling to larger dataset size is a known drawback of this model to consider.
+
+These results are discussed in Appendix C and presented in Table 7.
+
+#### Main Result 4: Using a 1-layer MLP is better than using a single fully connected layer as privacy classifier coupled with a pre-trained scene classifier
+
+We compared S2P with 2 variants that replace the fully connected layer of S2P with a 1-layer MLP and 2-layer MLP, respectively, where 1-layer means the number of hidden layers.
+The increasing number of parameters optimised for privacy by the variants of S2P allows the model to improve the classification performance compared to S2P, especially in terms of recall of the private class and balanced accuracy on both datasets, and achieve performance more comparable to ResNet-50 with SVM. However, increasing from 1 to 2 hidden layers provides a minimal overall improvement and an increase in false positives towards predicting images as private.
+
+These results are discussed in Appendix C and presented in Table 7.
 
 ### Experiments <a name="experiments"></a>
-List each experiment the reviewer has to execute. Describe:
- - How to execute it in detailed steps.
- - What the expected result is.
- - How long it takes and how much space it consumes on disk. (approximately)
- - Which claim and results does it support, and how.
 
-These experiments simply reproduce the results reported in the article using the already trained models. 
-We do not include details on how to reproduce the training of the models and reviewers are not asked to run the training pipeline of the models.
+These experiments simply reproduce the results reported in the article using the already trained models. For each experiment, we provide one bash script that can be run to reproduce the results. We do not include details on how to reproduce the training of the models and reviewers are not asked to run the training pipeline of the models.
+
+The following experiments do not reproduce the analysis of the MLP variants, the anaylsis of the MLP hyperparameters, and the analysis of GA-MLP variants, presented in the Appendix of the article. Users can refer to the scripts for each model in the folder ``scripts``, the instructions provided in [Testing the Environment](#testing-environment), and the corresponding [Trained Models](#trained-models) to reproduce the results.
+
+**Reminder**: these experiments are currently not reproducible due to the limitations in obtaining the datasets and the not-yet-available links to the trained models. Because of this, the esimated time to run each script might not be provided.
 
 #### Experiment 1: Evaluation of various design choices for the GIP model
-Provide a short explanation of the experiment and expected results.
-Describe thoroughly the steps to perform the experiment and to collect and organize the results as expected from your paper.
-Use code segments to support the reviewers, e.g.,
-```bash
-python experiment_1.py
-```
 
- 
+This experiment reproduces the results presented in Table 3 of the article, Sec.6.7 (Relative impacts on image privacy), using the various GIP models (see corresponding table in [Trained Models](#trained-models) for downloading each model). We provide a bash script that unzips the archive of each GIP model and runs each model on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment1.csv``. The latter file allows to verify the results of the experiment as reported in Table 3, except for the rows of results taken from the GIP paper.
+
+Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
+
+Running instructions:
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment1.sh`` by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+3. Open the terminal in the working directory of the repository.
+4. Run: ``source scripts/run_experiment1.sh``
+
+Note that the prediction file is overwritten after each model as the model name is the same.
+
+This experiment supports the claims in the Main Results 2.
 
 #### Experiment 2: Evaluation of various design choices for the GPA model
-...
+
+This experiment reproduces the results presented in Table 4 of the article, Sec.6.7 (Relative impacts on image privacy), using the various GIP models (see corresponding table in [Trained Models](#trained-models) for downloading each model). We provide a bash script that unzips the archive of each GIP model and runs each model on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment2.csv``. The latter file allows to verify the results of the experiment as reported in Table 4, except for the rows of results taken from the GIP paper.
+
+The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
+
+Running instructions:
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment2.sh`` by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+3. Open the terminal in the working directory of the repository.
+4. Run: ``source scripts/run_experiment2.sh``
+
+Note that the prediction file is overwritten after each model as the model name is the same.
+
+This experiment supports the claims in the Main Results 2.
 
 #### Experiment 3: Comparative analysis of methods for image privacy classification 
 
-This experiment reproduces the results presented in Table 5 of the article. We provide a bash script that downloads the already trained models listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/<model-name>.csv``. The latter file allows to verify the results of the experiment as reported in Table 5.
+This experiment reproduces the results presented in Table 5 of the article. We provide a bash script that unzips the archive of each model listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/<model-name>.csv``. The latter file allows to verify the results of the experiment as reported in Table 5.
 
-Running this script takes XXX. The predictions and classification performance .csv files occupy less than 1 MB. The models, stored in ``/trained_models/`` folder, occupy at maximum 200 MB.
+The predictions and classification performance .csv files occupy less than 1 MB.  Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
+
+Running instructions:
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment3.sh`` by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+3. Open the terminal in the working directory of the repository.
+4. Run: ``source scripts/run_experiment3.sh``
+
+Note that the prediction file is overwritten after each model as the model name is the same.
+
+This experiment supports the claims in the Main Results 1.
 
 #### Experiment 4: Comparative analysis of additional methods for image privacy classification
 
@@ -529,15 +663,7 @@ Running instructions:
 
 Note that some of the models are run with different configurations and therefore their predictions file are overwritten with the most recent configuration. 
 
-#### Experiment 5: MLP variants
-...
-
-#### Experiment 6: MLP hyper-parameters analysis
-...
-
-
-#### Experiment 7: GA-MLP variants
-...
+This experiment supports the claims in the Main Results 3 and Main Results 4.
 
 ## Limitations <a name="limitations"></a>
 
