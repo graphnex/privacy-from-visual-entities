@@ -240,25 +240,37 @@ Models can be extracted in the folder ``trained_models`` and then used within th
 </details>
 
 <details>
-<summary> Show table of models and links </summary>
-
+<summary> Show table of models and links for comparative analysis (Section 6.9, Table 5) </summary>
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
+| MLP-I   | 1.0     | [link]()     | [link]() |
+| MLP   | 1.0     | [link]()     | [link]() |
+| GA-MLP   | 1.0     | [link]()     | [link]() |
+| GIP   | 2.2     | [link]()     | [link]() |
+| GPA   | 1.4     | [link]()     | [link]() |
 | S2P   | 1.0     | [link]()     | [link]() |
-| MLP-I   | 1.8     | [link]()     | [link]() |
-| TAGSVM   | 1.0     | [link]()     | [link]() |
-| RNP2SVM   | 1.0     | [link]()     | [link]() |
-| RNP2SVM   | 1.2     | [link]()     | [link]() |
-| RNP2FT   | 1.0     | [link]()     | [link]() |
-| S2P_MLP   | 1.0     | [link]()     | [link]() |
-| S2P_MLP   | 1.1     | [link]()     | [link]() |
-
 
 </details>
 
 <details>
-<summary> Show table of models and links for the analysis of different design choices of MLP (Appendix C.1) </summary>
+<summary> Show table of models and links for additional comparisons (Appendix C, Table 7) </summary>
+
+
+| Model | Configuration | PrivacyAlert | IPD |
+|-------|---------|--------------|-----|
+| TAGSVM   | 1.0     | [link]()     | [link]() |
+| RNP2SVM   | 1.0     | [link]()     | [link]() |
+| RNP2SVM   | 1.2     | [link]()     | [link]() |
+| RNP2FT   | 1.0     | [link]()     | [link]() |
+| S2P   | 1.0     | [link]()     | [link]() |
+| S2P_MLP   | 1.0     | [link]()     | [link]() |
+| S2P_MLP   | 1.1     | [link]()     | [link]() |
+
+</details>
+
+<details>
+<summary> Show table of models and links for the analysis of different design choices of MLP (Appendix D.1, Table 8) </summary>
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
@@ -272,7 +284,7 @@ Models can be extracted in the folder ``trained_models`` and then used within th
 </details>
 
 <details>
-<summary> Show table of models and links for hyperparameter analysis (Appendix C.2) </summary>
+<summary> Show table of models and links for hyperparameter analysis (Appendix D.2, Figure 9) </summary>
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
