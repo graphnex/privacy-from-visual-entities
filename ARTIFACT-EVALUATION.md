@@ -158,6 +158,8 @@ cd curated_privacyalert/
 source scripts/download_images.sh
 
 # 5. Run the script to re-arrange the images in batches.
+# This script assumes that the same images in the dataset are still available. 
+# If there could be missing images, batches would contain different images than those organised in the curated data annotations.
 source scripts/run_imgs_to_batches.sh
 
 # 6. Go back to parent directory and repeat 3-5 steps for other datasets
@@ -202,11 +204,99 @@ Here is an example of the final expected organisation of the images:
 
 ### Pre-computed visual entitities <a name="data-visual-entities"></a>
 
-| Type | PicAlert | VISPR | PrivacyAlert | 
-|------|----------|-------|--------------|
-| Scenes | [link]() | [link]() | [link]() | 
-| Objects (YOLOv8x-COCO) | [link]() | [link]() | [link]() | 
+Some of the models run their pipeline end-to-end with the images as input, whereas other models require different or additional inputs.
+These inputs include the pre-computed visual entities (scene types and object types) represented in a graph format, e.g. for a Graph Neural Network.
 
+For each image of each dataset, namely PrivacyAlert, PicAlert, and VISPR, we provide the predicted scene probabilities as a .csv file , the detected objects as a .json file in COCO data format, and the node features (visual entities already organised in graph format with their features) as a .json file. 
+For consistency, all the files are already organised in batches following the structure of the images in the datasets folder.
+For each dataset, we also provide the pre-computed adjacency matrix for the graph data. 
+
+**Note**: IPD is based on PicAlert and VISPR and therefore IPD refers to the scene probabilities and object detections of the other two datasets. Both PicAlert and VISPR must be downloaded and prepared to use IPD for training and testing. 
+
+The table below provides the link to the archive file for each dataset and each visual entity type.
+
+| Type | PicAlert | VISPR | PrivacyAlert | IPD |
+|------|----------|-------|--------------|-----|
+| Scenes | [link]() | [link]() | [link]() | N/A |
+| Objects | [link]() | [link]() | [link]() | N/A |
+| Graph data | [link]() | [link]() | [link]() | [link]() |
+
+These files should be unzipped in the folder ``/resources/`` and follow this structure:
+```
+. # resources/
+|--IPD
+|     |--- graph_data
+|           |---adj_mat
+|                    |--- ***.csv
+|
+|--PicAlert
+|     |---dets
+|     |     |---batch00
+|     |     |       |--- ***.json
+|     |     |       |--- ***.json
+|     |     |       |--- ...
+|     |     |---batch01
+|     |     |       |--- ***.json
+|     |     |       |--- ***.json
+|     |     |       |--- ...
+|     |     |--- ...
+|     |
+|     |--- scenes
+|     |     |---batch00
+|     |     |       |--- ***.csv
+|     |     |       |--- ***.csv
+|     |     |       |--- ...
+|     |     |---batch01
+|     |     |       |--- ***.csv
+|     |     |       |--- ***.csv
+|     |     |       |--- ...
+|     |     |--- ...
+|     |
+|     |--- graph_data
+|           |---adj_mat
+|           |        |--- ***.csv
+|           |
+|           |---node_feats
+|                   |--- batch00
+|                   |       |--- ***.json
+|                   |       |--- ***.json
+|                   |       |--- ...
+|                   |--- batch01
+|                   |       |--- ***.json
+|                   |       |--- ***.json
+|                   |       |--- ...
+|                   |--- ...
+|
+|
+|--PrivacyAlert
+|     |---dets
+|     |     |--- ...
+|     |
+|     |--- scenes
+|     |     |--- ...
+|     |
+|     |--- graph_data
+|           |---adj_mat
+|           |        |--- ***.csv
+|           |
+|           |---node_feats
+|                   |--- ...
+|
+|--VISPR
+|     |---dets
+|     |     |--- ...
+|     |
+|     |--- scenes
+|     |     |--- ...
+|     |
+|     |--- graph_data
+|           |---adj_mat
+|           |        |--- ***.csv
+|           |
+|           |---node_feats
+|                   |--- ...
+|-- ...
+```
 
 ### Trained models <a name="trained-models"></a>
 
@@ -392,7 +482,8 @@ List each experiment the reviewer has to execute. Describe:
  - How long it takes and how much space it consumes on disk. (approximately)
  - Which claim and results does it support, and how.
 
-These experiments simply reproduce the results reported in the article using the already trained models. We do not include details on how to reproduce the training of the models and reviewers are not asked to run the training pipeline of the models.
+These experiments simply reproduce the results reported in the article using the already trained models. 
+We do not include details on how to reproduce the training of the models and reviewers are not asked to run the training pipeline of the models.
 
 #### Experiment 1: Evaluation of various design choices for the GIP model
 Provide a short explanation of the experiment and expected results.
@@ -439,7 +530,7 @@ Note that some of the models are run with different configurations and therefore
 
 ## Limitations <a name="limitations"></a>
 
-The datasets are originally provided by other sources and have been re-organised and curated for this work. Similar to the original datasets (PicAlert and PrivacyAlert), we provide the link to the images in the download scripts, however running the scripts can incur in the "429 Too Many Requests" status code. This makes the datasets hard to obtain from the original Flickr location, and thus impacting the testing of the reproducibility of the experiments. Moreover, owners of the photos on Flick could have removed the photos from the social media platform, resulting in less images than those used for training and testing the models in the article. This means that other researchers will need to privately request the current version of the datasets as used in the article to reproduce the results or make fair comparisons.
+The datasets are originally provided by other sources and have been re-organised and curated for this work. Similar to the original datasets (PicAlert and PrivacyAlert), we provide the link to the images in the download scripts, however running the scripts can incur in the "429 Too Many Requests" status code. This makes the datasets hard to obtain from the original Flickr locations, and thus impacting the testing of the reproducibility of the experiments. Moreover, owners of the photos on Flick could have removed the photos from the social media platform, resulting in less images than those used for training and testing the models in the article. This means that other researchers will need to privately request the current version of the datasets as used in the article to reproduce the results or make fair comparisons.
 
 The software was designed and developed to also favour reproducibility of the training pipeline of the various models. However, also including the reproducibility of training of the various models is time-consuming during the review process (especially for large models such as GIP). 
 
@@ -450,4 +541,4 @@ The overall goal of artifact evaluation is not only to reproduce and verify your
 Please describe how your artifacts can be adapted to other settings, e.g., more input dimensions, other datasets, and other behavior, through replacing individual modules and functionality or running more iterations of a specific part.
 
 
-Trained models are currently provided from an institutional link for the review process and given the short amount of time to prepare the submission of the artifact. We will upload the trained models and the source files to obtain the datasets and processed graph data in a Zenodo repository to comply with FAIR principle and Open Research by the end of the review process of the artifact. 
+Trained models are currently provided from an institutional link for the review process, given the short amount of time to prepare the submission of the artifact. We will upload the trained models and the source files to obtain the datasets and processed graph data in a Zenodo repository to comply with FAIR principle and Open Research by the end of the review process of the artifact. 
