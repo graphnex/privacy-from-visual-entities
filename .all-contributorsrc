@@ -1,4 +1,30 @@
 {
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "kerolex",
+      "name": "Alessio Xompero, PhD",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7253675?v=4",
+      "profile": "http://www.eecs.qmul.ac.uk/~ax300",
+      "contributions": [
+        "doc",
+        "research",
+        "code",
+        "projectManagement"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
   "projectName": "privacy-from-visual-entities",
   "projectOwner": "graphnex"
 }
+
