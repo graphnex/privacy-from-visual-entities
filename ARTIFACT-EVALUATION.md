@@ -530,16 +530,23 @@ conda deactivate
 ## Artifact Evaluation <a name="evaluation"></a> 
 
 ### Main Results and Claims <a name="results-claims"></a> 
-List all your paper's results and claims that are supported by your submitted artifacts.
 
-#### Main Result 1: Relative impacts on image privacy
+#### Main Result 1: Using transfer learning from a pre-trained scene classifier is sufficient for achieving best classification performance in image privacy
 
-We analysed the classification performance of both GIP and GPA models when re-trained with different training strategies and different design choices to better understand the relative contribution of their individual components. The analysis shows that
-the GIP is highly affected by the presence of the deep features in the privacy nodes and only using the deep features from the objects might be sufficient, and using the node type in the feature vectors is relevant for the model.
+We perform an in-depth comprative analysis of the classification performance across various models, including GIP, GPA, MLP-I, MLP, GA-MLP, and S2P, and other baselines, on both the IPD and PrivacyAlert datasets. For both datasets, our re-trained GPA and S2P achieve the highest classification results in terms of overall accuracy (>83% on IPD, and >80% in PrivacyAlert) and balanced accuracy (>80% on IPD and >75% in PrivacyAlert). The similar performance between GPA and S2P indicates that using transfer learning from the pre-trained scene classifier is sufficient for achieving such a performance and the impact of graph processing on the results is minimal. 
 
-These results are discussed in Sec.6.7 and presented in Table 3 and Table 4 of the article. 
+The claim is mentioned across the paper, including abstract, introduction, Sec.6.11 (Discussion), and Sec.7 (Conclusion). These results are discussed in Sec.6.9, Table 5, Figure 5, anf Figure 6. 
 
-#### Main Result 2: Name
+#### Main Result 2: Relative impacts of individual model components on image privacy
+
+We analysed the classification performance of both GIP and GPA models when re-trained with different training strategies and different design choices to better understand the relative contribution of their individual components. 
+The analysis shows that the GIP is highly affected by the presence of the deep features in the privacy nodes and only using the deep features from the objects might be sufficient, and using the node type in the feature vectors is relevant for the model.
+GPA degenerates to predict only the public class when pre-training and fixing the parameters of the scene-to-privacy layer, and when correcting the implementation of the adjacency matrix wrongly initialised in the original implementation of GPA. Best performance are achieved by the GPA variant with the bipartite prior graph, pre-trained re-shape layer, and use of the reshape layer. 
+
+These results are discussed in Sec.6.7 and presented in Table 3 and Table 4 of the article.
+
+#### Main Result 3: Comparative analysis with other prior works
+
 Describe the results in 1 to 3 sentences.
 Refer to the related sections in your paper and reference the experiments that support this result/claim.
 
@@ -560,8 +567,6 @@ Use code segments to support the reviewers, e.g.,
 ```bash
 python experiment_1.py
 ```
-
- 
 
 #### Experiment 2: Evaluation of various design choices for the GPA model
 ...
@@ -585,16 +590,6 @@ Running instructions:
 4. Run: ``source scripts/run_experiment4.sh``
 
 Note that some of the models are run with different configurations and therefore their predictions file are overwritten with the most recent configuration. 
-
-#### Experiment 5: MLP variants
-...
-
-#### Experiment 6: MLP hyper-parameters analysis
-...
-
-
-#### Experiment 7: GA-MLP variants
-...
 
 ## Limitations <a name="limitations"></a>
 
