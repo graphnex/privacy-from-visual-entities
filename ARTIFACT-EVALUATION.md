@@ -26,6 +26,7 @@ Requested Badge: **Functional and Available**
     2. [Experiments](#experiments)
 5. [Limitations](#limitations)
 6. [Notes on Reusability](#reusability)
+7. [References](#references)
 
 ## Description <a name="description"></a>
 
@@ -565,6 +566,9 @@ conda deactivate
 
 ### Main Results and Claims <a name="results-claims"></a> 
 
+References to sections, tables, and figures correspond to those in the revised and accepted manuscript (uploaded for review as Revision_v1.0). 
+These references will be updated to the corresponding ones in the final version after the camera-ready is submitted and published.
+
 #### Main Result 1: Using transfer learning from a pre-trained scene classifier is sufficient for achieving best classification performance in image privacy
 
 We perform an in-depth comprative analysis of the classification performance across various models, including GIP, GPA, MLP-I, MLP, GA-MLP, and S2P, and other baselines, on both the IPD and PrivacyAlert datasets. For both datasets, our re-trained GPA and S2P achieve the highest classification results in terms of overall accuracy (>83% on IPD, and >80% in PrivacyAlert) and balanced accuracy (>80% on IPD and >75% in PrivacyAlert). The similar performance between GPA and S2P indicates that using transfer learning from the pre-trained scene classifier is sufficient for achieving such a performance and the impact of graph processing on the results is minimal. 
@@ -635,7 +639,7 @@ This experiment supports the claims in the Main Results 2.
 
 #### Experiment 3: Comparative analysis of methods for image privacy classification 
 
-This experiment reproduces the results presented in Table 5 of the article. We provide a bash script that unzips the archive of each model listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/<model-name>.csv``. The latter file allows to verify the results of the experiment as reported in Table 5.
+This experiment reproduces the results presented in Table 5 of the article, Sec.6.9 (Comparative analysis). We provide a bash script that unzips the archive of each model listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/<model-name>.csv``. The latter file allows to verify the results of the experiment as reported in Table 5.
 
 The predictions and classification performance .csv files occupy less than 1 MB.  Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
@@ -651,7 +655,7 @@ This experiment supports the claims in the Main Results 1.
 
 #### Experiment 4: Comparative analysis of additional methods for image privacy classification
 
-This experiment reproduces the results presented in Table 9 of the article (Appendix B.3). We provide a bash script that download the already trained models listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment4.csv``. The latter file allows to verify the results of the experiment as reported in Table 9, except the two rows whose results are taken from Zhao et al.'s evaluation on PrivacyAlert [2].
+This experiment reproduces the results presented in Table 7 of the article (Appendix C). We provide a bash script that download the already trained models listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment4.csv``. The latter file allows to verify the results of the experiment as reported in Table 7, except the two rows whose results are taken from Zhao et al.'s evaluation on PrivacyAlert [2].
 
 Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
@@ -690,7 +694,7 @@ Overall, the framework can enable a common and standard benchmark for image priv
 
 We might include further documentation on how to add new datasets, models, and components upon community requests.
 
-## References
+## References <a name="references"></a>
 
 [1] G. Yang, J. Cao, Z. Chen, J. Guo, and J. Li., "_Graph-based neural networks for explainable image privacy inference_", Pattern Recognition, 2020 [[link](https://doi.org/10.1016/j.patcog.2020.107360)]
 
