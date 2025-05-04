@@ -26,6 +26,7 @@ Requested Badge: **Functional and Available**
     2. [Experiments](#experiments)
 5. [Limitations](#limitations)
 6. [Notes on Reusability](#reusability)
+7. [References](#references)
 
 ## Description <a name="description"></a>
 
@@ -35,7 +36,7 @@ This artifact contains the source code of the framework for training, testing, a
 
 The software enables the training and testing of various learning-based models for predicting an image as public or private. Some of the models learn to predict this label directly from the image as input. Other models have intermediate steps that use pre-trained model for recognising object types or scene types in the image and then these visual entities are used as input to another model trained for predicting the privacy label. The software includes the loading of exisiting public datasets for image privacy, such as PrivacyAlert and Image Privacy Dataset (IPD), that contain sensitive photos even if the original images were provided under Public Domain license by the users on Flickr. 
 
-Potential ethical concerns of the trained model are direclty related to the data used for training. Models achieve limited classification performance on the testing sets of the dataset and hence they should not be considered reliable for general use.
+Potential ethical concerns of the trained models are directly related to the data used for training. Models achieve limited classification performance on the testing sets of the dataset and hence they should not be considered reliable for general use.
 
 ## Basic Requirements <a name="basic-requirements"></a>
 
@@ -43,11 +44,11 @@ Potential ethical concerns of the trained model are direclty related to the data
 
 The software was run on a Linux-based machine using one NVIDIA GeForce GTX 1080 Ti GPU with 12 GB of RAM (CUDA 10.2). 
 
-We expect the software to successfully run on a machine/workstation with similar or higher requirements. 
+We expect the software to successfully run on a machine/workstation with similar or higher specifications. 
 
 ### Software Requirements <a name="software-requirements"></a>
 
-The software was run on a Linux-based machine (CentOS 6).
+The software was run on a Linux-based machine (CentOS Linux release 7.7.1908).
 
 <details>
 <summary> Show packages </summary><br>
@@ -92,7 +93,7 @@ For PicAlert and PrivacyAlert, only urls to the original locations in Flickr are
 
 **Disclaimer**: The datasets are originally provided by other sources and have been re-organised and curated for this work. Similar to the original datasets (PicAlert and PrivacyAlert), we provide the link to the images in the download scripts, however running the scripts can incur in the "429 Too Many Requests" status code. This makes the datasets hard to obtain from the original Flickr location, and thus impacting the testing of the reproducibility of the experiments. Moreover, owners of the photos on Flick could have removed the photos from the social media platform, resulting in less images than those used for training and testing the models in the article. This means that other researchers will need to privately request the current version of the datasets as used in the article to reproduce the results or make fair comparisons.
 
-**Note**: Following links to the curated image privacy data sets will be updated with the corresponding Zenodo links once the archives are uploaded in a Zenodo repository/record to comply with FAIR principles and Open Research.
+**Note**: The following links to the curated image privacy data sets will be updated with the corresponding Zenodo links once the archives are uploaded in a Zenodo repository/record to comply with FAIR principles and Open Research.
 
 <details>
 <summary> Show details and instructions </summary>
@@ -565,6 +566,9 @@ conda deactivate
 
 ### Main Results and Claims <a name="results-claims"></a> 
 
+References to sections, tables, and figures correspond to those in the revised and accepted manuscript (uploaded for review as Revision_v1.0). 
+These references will be updated to the corresponding ones in the final version after the camera-ready is submitted and published.
+
 #### Main Result 1: Using transfer learning from a pre-trained scene classifier is sufficient for achieving best classification performance in image privacy
 
 We perform an in-depth comprative analysis of the classification performance across various models, including GIP, GPA, MLP-I, MLP, GA-MLP, and S2P, and other baselines, on both the IPD and PrivacyAlert datasets. For both datasets, our re-trained GPA and S2P achieve the highest classification results in terms of overall accuracy (>83% on IPD, and >80% in PrivacyAlert) and balanced accuracy (>80% on IPD and >75% in PrivacyAlert). The similar performance between GPA and S2P indicates that using transfer learning from the pre-trained scene classifier is sufficient for achieving such a performance and the impact of graph processing on the results is minimal. 
@@ -619,7 +623,7 @@ This experiment supports the claims in the Main Results 2.
 
 #### Experiment 2: Evaluation of various design choices for the GPA model
 
-This experiment reproduces the results presented in Table 4 of the article, Sec.6.7 (Relative impacts on image privacy), using the various GIP models (see corresponding table in [Trained Models](#trained-models) for downloading each model). We provide a bash script that unzips the archive of each GIP model and runs each model on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment2.csv``. The latter file allows to verify the results of the experiment as reported in Table 4, except for the rows of results taken from the GIP paper.
+This experiment reproduces the results presented in Table 4 of the article, Sec.6.7 (Relative impacts on image privacy), using the various GIP models (see corresponding table in [Trained Models](#trained-models) for downloading each model). We provide a bash script that unzips the archive of each GIP model and runs each model on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment2.csv``. The latter file allows to verify the results of the experiment as reported in Table 4, except for the rows of results taken from the GIP paper [1].
 
 The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
@@ -635,7 +639,7 @@ This experiment supports the claims in the Main Results 2.
 
 #### Experiment 3: Comparative analysis of methods for image privacy classification 
 
-This experiment reproduces the results presented in Table 5 of the article. We provide a bash script that unzips the archive of each model listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/<model-name>.csv``. The latter file allows to verify the results of the experiment as reported in Table 5.
+This experiment reproduces the results presented in Table 5 of the article, Sec.6.9 (Comparative analysis). We provide a bash script that unzips the archive of each model listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/<model-name>.csv``. The latter file allows to verify the results of the experiment as reported in Table 5.
 
 The predictions and classification performance .csv files occupy less than 1 MB.  Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
@@ -651,7 +655,7 @@ This experiment supports the claims in the Main Results 1.
 
 #### Experiment 4: Comparative analysis of additional methods for image privacy classification
 
-This experiment reproduces the results presented in Table 9 of the article (Appendix B.3). We provide a bash script that download the already trained models listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment4.csv``. The latter file allows to verify the results of the experiment as reported in Table 9, except the two rows whose results are taken from Zhao et al.'s evaluation on PrivacyAlert [62].
+This experiment reproduces the results presented in Table 7 of the article (Appendix C). We provide a bash script that download the already trained models listed in the table and runs these models on the testing sets of both PrivacyAlert and IPD datasets. The predictions of each model are saved into ``results/<dataset>/<model-name>.csv``. Classification performance are also computed and saved into ``results/<dataset>/res_experiment4.csv``. The latter file allows to verify the results of the experiment as reported in Table 7, except the two rows whose results are taken from Zhao et al.'s evaluation on PrivacyAlert [2].
 
 Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
@@ -667,9 +671,9 @@ This experiment supports the claims in the Main Results 3 and Main Results 4.
 
 ## Limitations <a name="limitations"></a>
 
-The datasets are originally provided by other sources and have been re-organised and curated for this work. Similar to the original datasets (PicAlert and PrivacyAlert), we provide the link to the images in the download scripts, however running the scripts can incur in the "429 Too Many Requests" status code. This makes the datasets hard to obtain from the original Flickr locations, and thus impacting the testing of the reproducibility of the experiments. Moreover, owners of the photos on Flick could have removed the photos from the social media platform, resulting in less images than those used for training and testing the models in the article. This means that other researchers will need to privately request the current version of the datasets as used in the article to reproduce the results or make fair comparisons.
+See disclaimer in [Curated image privacy data sets](#datasets) related to the problem of obtaining the datasets ("429 Too Many Requests" status code when downloading images from Flickr, and missing images), making the results of the artifact hard to reproduce and requiring other researchers to privately request the images.
 
-The software was designed and developed to also favour reproducibility of the training pipeline of the various models. However, also including the reproducibility of training of the various models is time-consuming during the review process (especially for large models such as GIP). 
+The software was designed and developed to also favour reproducibility of the training pipeline of the various models. However, also including the reproducibility of training of the various models is time-consuming during the review process (especially for large models such as GIP [1]). 
 
 ## Notes on Reusability <a name="reusability"></a>
 
@@ -689,3 +693,9 @@ Other researchers can:
 Overall, the framework can enable a common and standard benchmark for image privacy classification. 
 
 We might include further documentation on how to add new datasets, models, and components upon community requests.
+
+## References <a name="references"></a>
+
+[1] G. Yang, J. Cao, Z. Chen, J. Guo, and J. Li., "_Graph-based neural networks for explainable image privacy inference_", Pattern Recognition, 2020 [[link](https://doi.org/10.1016/j.patcog.2020.107360)]
+
+[2] C. Zhao, J. Mangat, S. Koujalgi, A. Squicciarini, and C. Caragea, "_PrivacyAlert: A Dataset for Image Privacy Prediction_", Int. AAAI Conf. Web and Social Media, 2022 [[link](https://doi.org/10.1609/icwsm.v16i1.19387)]
