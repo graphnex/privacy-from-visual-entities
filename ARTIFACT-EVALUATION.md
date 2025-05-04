@@ -30,7 +30,7 @@ Requested Badge: **Functional and Available**
 
 ## Description <a name="description"></a>
 
-This artifact contains the source code of the framework for training, testing, and evaluating the models for image privacy classification used in the article: A. Xompero and A. Cavallaro, "Learning Privacy from Visual Entities", Proceedings on Privacy Enhancing Technologies (PoPETs), Volume 2025, Issue 3, 2025 (to appear).
+This artifact contains the source code of the framework for training, testing, and evaluating the models for image privacy classification used in the article: A. Xompero and A. Cavallaro, "Learning Privacy from Visual Entities", Proceedings on Privacy Enhancing Technologies (PoPETs), Volume 2025, Issue 3, 2025.
 
 ### Security/Privacy Issues and Ethical Concerns <a name="security-ethical"></a>
 
@@ -307,7 +307,13 @@ These files should be unzipped in the folder ``/resources/`` and follow the stru
 </details>
 
 Example of bash code to download the ZIP files of the visual entities and unzip them in the folder ``resources/``. 
-The following lines are expected to be run from the repository working directory.
+
+You can run the bash script [scripts/download_precomputed_visual_entities.sh](scripts/download_precomputed_visual_entities.sh) from your terminal
+```bash
+source scripts/download_precomputed_visual_entities.sh
+```
+
+Alternatively, the following lines are expected to be run from the repository working directory.
 
 ```bash
 # Download and extract the scene probabilities for each dataset
