@@ -420,7 +420,7 @@ if __name__ == "__main__":
         config = json.load(f)
 
     # Add dataset configurations
-    with open(os.path.join("configs", "datasets.json")) as f:
+    with open(os.path.join(dirlevel0,"configs", "datasets.json")) as f:
         data_config = json.load(f)
 
     config["paths"] = data_config["paths"]
