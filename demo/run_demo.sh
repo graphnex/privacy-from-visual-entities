@@ -30,6 +30,26 @@
 #
 # Activate the conda environment. The command conda is the default one.
 # Some OS might not work with the command conda, and the command source can be used as an alternative
+# source activate graphnex-gnn
+
+# # Set the GPU number to use in a multi-GPU machine. The variable 
+# # is not always needed, and depends on your machine/server
+# CUDA_DEVICE=0
+
+# CONFIG_FILE=s2p_v1.0.json
+
+# CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py \
+# 	s2p.pth \
+# 	$CONFIG_FILE \
+# 	"."
+
+# conda deactivate
+
+#################################################################
+# ALTERNATIVE STEP 3: PREDICT ONE IMAGE AS PRIVATE OR PUBLIC WITH THE MODEL
+#
+# Activate the conda environment. The command conda is the default one.
+# Some OS might not work with the command conda, and the command source can be used as an alternative
 source activate graphnex-gnn
 
 # Set the GPU number to use in a multi-GPU machine. The variable 
@@ -38,31 +58,11 @@ CUDA_DEVICE=0
 
 CONFIG_FILE=s2p_v1.0.json
 
+IMAGENAME=50039888078.jpg
+
 CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py \
 	s2p.pth \
 	$CONFIG_FILE \
-	"."
+	$IMAGENAME
 
 conda deactivate
-
-#################################################################
-# ALTERNATIVE STEP 3: PREDICT ONE IMAGE AS PRIVATE OR PUBLIC WITH THE MODEL
-#
-# Activate the conda environment. The command conda is the default one.
-# Some OS might not work with the command conda, and the command source can be used as an alternative
-# source activate graphnex-gnn
-
-# # Set the GPU number to use in a multi-GPU machine. The variable 
-# # is not always needed, and depends on your machine/server
-# CUDA_DEVICE=0
-
-# CONFIG_FILE=../configs/s2p_v1.0.json
-
-# IMAGENAME=50039888078.jpg
-
-# CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo s2p.py \ 
-# 	sp2.pt \ 
-# 	$CONFIG_FILE \ 
-# 	$IMAGENAME
-
-# conda deactivate

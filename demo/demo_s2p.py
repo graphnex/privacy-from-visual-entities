@@ -64,15 +64,6 @@ class ImageData(data.Dataset):
         data_dir=".",
         img_size=448,
     ):
-        """
-        Arguments:
-            - repo_dir:
-            - data_dir: directory where the dataset (images) is stored.
-            - partition: Options: crossval, final. Default: final.
-            - split: Options: train, val, test. Default: train.
-            - num_classes: number of the output classes. Default: 2 (private and public).
-            - fold_id:
-        """
         super(ImageData, self).__init__()
 
         self.data_dir = data_dir
@@ -80,26 +71,27 @@ class ImageData(data.Dataset):
 
         self.im_size = img_size
 
+        print(self.imgs)
+
     def load_image_list(self, data_dir):
         img_list = []
 
-        for imgfn in glob.glob(data_dir):
+        for imgfn in glob.glob(os.path.join(data_dir,'*')):
             if imgfn.endswith(IMGEXT):
-                img_list.append(imgfn)
+                img_list.append(os.path.basename(imgfn))
 
         return sorted(img_list)
 
     def __getitem__(self, index):
         """Return one item of the iterable data
         """
-
-        # load_image(filename, data_dir, b_transform=True, img_size=448)
-
         full_im, w, h = load_image(
             self.imgs[index],
             self.data_dir,
             img_size=self.im_size,
         )
+
+        print(self.imgs[index])
 
         return full_im, self.imgs[index], np.array([w, h])
 
@@ -125,12 +117,11 @@ class DemoImageModels():
 
         self.log = Logging()
         self.log.initialise(os.path.join(self.root_dir, "demo", "log.txt"))
-
-        #----------------------
-        # config["net_params"]
         
     def load_data(self, data_dir):
+        print("Load data")
 
+        print(data_dir)
         self.data_loader = DataLoader(
             ImageData(
                 data_dir=data_dir,
@@ -201,6 +192,7 @@ class DemoImageModels():
                 o_im_size,
             ) in enumerate(tqdm(self.data_loader, ascii=True)):
                 # Run forward of the model (return logits)
+
                 imgs_var = imgs.to(device)
 
                 if model_name in ["s2p", "s2pmlp"]:
@@ -329,17 +321,16 @@ class DemoImageModels():
         # Add the predictions in current batch to all predictions
         cm_pred = np.concatenate([cm_pred, preds])
 
-        sample_arr = np.concatenate([sample_arr, list(image_name)])
+        sample_arr.append(basename)
 
         # Prepare data for saving
-        sample_arr2 = [sample for sample in sample_arr]
         pred_scores_l = [
             num for sublist in prediction_scores for num in sublist
         ]
 
         self.save_predictions(
             # self.net.get_model_name(),
-            sample_arr2,
+            sample_arr,
             pred_scores_l,
             cm_pred
         )
@@ -436,6 +427,6 @@ if __name__ == "__main__":
         processor.predict(args.image)
 
     elif os.path.isfile(args.image):
-        processor.predict_image(args.image)
+        processor.predict_img(args.image)
 
     print('Finished')
