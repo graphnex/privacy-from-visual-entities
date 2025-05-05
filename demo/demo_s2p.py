@@ -359,7 +359,6 @@ def GetParser(desc=""):
     # Positional argument 1
     parser.add_argument(
         "model", 
-        required=True,
         type=str,
         help="Please provide path and filename of the model to use."
     )
@@ -367,7 +366,6 @@ def GetParser(desc=""):
     # Positional argument 2
     parser.add_argument(
         "config", 
-        required=True, 
         type=str,
         help="Please provide a config.json file"
     )
@@ -375,7 +373,6 @@ def GetParser(desc=""):
     # Positional argument 3
     parser.add_argument(
         "image", 
-        required=True, 
         type=str,
         help="Please provide an image file or a directory where a list of images is stored."
     )
