@@ -698,6 +698,16 @@ python srcs/main.py                       \  #
 conda deactivate
 ```
 
+Instead of using the bash script, the training pipeline can be run with the following command lines from the terminal (arguments are used as an example):
+```bash
+conda activate graphnex-gnn
+
+python srcs/main.py --root_dir "." --dataset "PrivacyAlert" --config "configs/s2p_v1.0.0.json" --mode "training" --training_mode "original"
+
+conda deactivate
+```
+
+
 Segment for the testing pipeline:
 ```bash
 # Make sure to run the pipeline within the created conda environment
@@ -713,6 +723,15 @@ python srcs/main.py                       \  #
    --split_mode            "test"         \  # What data split to test (e.g., train, val, test)
    --model_mode            "best"            # What mode to use for testing: best model based on early stop and validation split (best), or the model saved at the last epoch (last)
 
+
+conda deactivate
+```
+
+Instead of using the bash script, the testing pipeline can be run with the following command lines from the terminal (arguments are used as an example):
+```bash
+conda activate graphnex-gnn
+
+python srcs/main.py --root_dir "." --dataset "PrivacyAlert" --config "configs/s2p_v1.0.0.json" --mode "testing" --training_mode "original" --split_mode "test" --model_mode "best"
 
 conda deactivate
 ```
@@ -769,8 +788,8 @@ This experiment reproduces the results presented in Table 3 of the article, Sec.
 Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment1.sh`` by placing the path to the folder where you downloaded the datasets.  
-2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file [scripts/run_experiment1.sh](scripts/run_experiment1.sh) by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file [configs/datasets.json](configs/datasets.json).
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment1.sh``
 
@@ -785,8 +804,8 @@ This experiment reproduces the results presented in Table 4 of the article, Sec.
 The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment2.sh`` by placing the path to the folder where you downloaded the datasets.  
-2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file [scripts/run_experiment2.sh](scripts/run_experiment2.sh) by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file [configs/datasets.json](configs/datasets.json).
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment2.sh``
 
@@ -801,8 +820,8 @@ This experiment reproduces the results presented in Table 5 of the article, Sec.
 The predictions and classification performance .csv files occupy less than 1 MB.  Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment3.sh`` by placing the path to the folder where you downloaded the datasets.  
-2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file [scripts/run_experiment3.sh](scripts/run_experiment3.sh) by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file [configs/datasets.json](configs/datasets.json).
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment3.sh``
 
@@ -817,8 +836,8 @@ This experiment reproduces the results presented in Table 7 of the article (Appe
 Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. In the file ``source scripts/run_experiment4.sh``, modify the variable ``IMAGEPRIVACY_DIR`` by placing the path to the folder where you downloaded the datasets.
-2. In the file ``configs/datasets.json``, alos place the path to the folder where you downloaded the datasets in the field ``data_dir``.
+1. In the file [scripts/run_experiment4.sh](scripts/run_experiment4.sh), modify the variable ``IMAGEPRIVACY_DIR`` by placing the path to the folder where you downloaded the datasets.
+2. In the file [configs/datasets.json](configs/datasets.json), alss place the path to the folder where you downloaded the datasets in the field ``data_dir``.
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment4.sh``
 
@@ -843,8 +862,8 @@ This artifact (source code) is a general framework that contains:
 Other researchers can:
 * reuse the full framework to re-train and evaluate the already provided models based on our configurations (see ``configs/*``);
 * train and evaluate the models with new configurations for comparison and optimisation by creating customised config files;
-* add, train, and test new models to the framework (see ``srcs/nets/*.py`` and ``srcs/load_net.py``);
-* add new datasets following the format of the curated datasets and corresponding loading modules (see for example ``srcs/datasets/imageprivacy.py``, ``srcs/datasets/privacyalert_graph.py``, ``srcs/datasets/wrapper_imgs.py``, ``srcs/datasets/wrapper.py``);
+* add, train, and test new models to the framework (see ``srcs/nets/*.py`` and [srcs/load_net.py](srcs/load_net.py));
+* add new datasets following the format of the curated datasets and corresponding loading modules (see for example [srcs/datasets/imageprivacy.py](srcs/datasets/imageprivacy.py), [srcs/datasets/privacyalert_graph.py](srcs/datasets/privacyalert_graph.py), [srcs/datasets/wrapper_imgs.py](srcs/datasets/wrapper_imgs.py), [srcs/datasets/wrapper.py](srcs/datasets/wrapper.py));
 * extend the framework to multi-class classification and evaluation.
 
 Overall, the framework can enable a common and standard benchmark for image privacy classification. 

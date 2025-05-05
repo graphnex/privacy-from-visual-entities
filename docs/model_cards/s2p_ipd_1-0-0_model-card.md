@@ -208,7 +208,7 @@ Further details on the results and discussion can be found in the [paper](https:
 
 Carbon emissions estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
 
-Note: we use the factor ((kgCO2e per kWh)) 0.3072 for UK in the source https://www.carbonfootprint.com/docs/2018_8_electricity_factors_august_2018_-_online_sources.pdf
+Note: we use the factor 0.3072 [kgCO2e per kWh] for UK  (source: https://www.carbonfootprint.com/docs/2018_8_electricity_factors_august_2018_-_online_sources.pdf)
 
 ## Technical Specifications
 
