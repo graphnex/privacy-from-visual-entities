@@ -509,16 +509,167 @@ python -m pip install ultralytics
 
 ### Testing the Environment <a name="testing-environment"></a>
 
-No specific tests currently available.
+No specific tests currently available. We provide a demo to test one of the trained models with some images sampled from PrivacyAlert. We also provide bash scripts in the folder ``scripts/`` that other researchers can use to run the training and testing pipelines for each model, and evaluate the results. 
 
-We provide bash scripts in the folder ``scripts/`` that other researchers can use to run the training and testing pipeline for each model, and evaluate the results. 
+#### Demo with S2P and sample images from PrivacyAlert
+
+The demo is located in the directory ``demo`` and containes a bash script [demo/run_demo.sh](demo/run_demo.sh) to run the demo provided in the Python file [demo/demo_s2p.py](demo/demo_s2p.py) with the S2P model, trained on PrivacyAlert, on some images of PrivacyAlert. 
+
+The bash script of the demo can be run from a terminal and the repository directory as follows:
+```bash
+cd demo/
+
+source run_demo.sh
+```
+
+<details>
+<summary> Show preliminary steps (download of images and model)</summary>
+
+The demo automatically downloads a list of images from the source location on Flickr in the demo directory. These images correspond to some of the images shown in the [paper](https://doi.org/10.48550/arXiv.2503.12464) (Sec.6.10, Fig.7, page 13).
+```bash
+# STEP 1: DOWNLOAD IMAGES FOR DEMO
+#
+# Download selected images from PrivacyAlert (as shown in the paper, Sec.6.10) in the current directory
+#
+# When PrivacyAlert was collected, these images were licensed under Public Domain. 
+# Please verify if the user changed the licence when downloading these images.
+
+wget https://live.staticflickr.com/65535/50039888078_88fb5d4722_c.jpg -O  50039888078.jpg
+wget https://live.staticflickr.com/65535/50252178257_4e69f47eac_c.jpg -O  50252178257.jpg
+wget https://live.staticflickr.com/65535/50789435118_4c012e37c1_c.jpg -O  50789435118.jpg
+wget https://live.staticflickr.com/65535/50583669162_77829f45af_c.jpg -O  50583669162.jpg
+wget https://live.staticflickr.com/65535/49196229738_3aa9ea88f8_c.jpg -O  49196229738.jpg
+wget https://live.staticflickr.com/65535/47705667841_00724f3a60_c.jpg -O  47705667841.jpg
+wget https://live.staticflickr.com/1887/43830339314_f317a8e1c9_c.jpg  -O  43830339314.jpg
+wget https://live.staticflickr.com/4305/35886895852_c4f26ed6f9_c.jpg  -O  35886895852.jpg
+wget https://live.staticflickr.com/65535/49834471323_2a4fd949b1_c.jpg -O  49834471323.jpg
+```
+
+The ZIP archive with the weights of the model S2P trained on PrivacyAlert is downloaded and extracted in the current directory along with the configuration file. 
+```bash
+# STEP 2: DOWNLOAD AND EXTRACT MODEL IN CURRENT DEMO FOLDER
+#
+wget https://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/s2p_PrivacyAlert_v1.0.0.zip
+
+# extract the trained model
+unzip -j s2p_PrivacyAlert_v1.0.0.zip trained_models/privacyalert/2-class/s2p/best_acc_s2p-original.pth -d .
+mv best_acc_s2p-original.pth s2p.pth # rename model for simplicity
+
+# extract also the configuration file
+unzip -j s2p_PrivacyAlert_v1.0.0.zip configs/s2p_v1.0.json -d .
+```
+
+</details>
+
+<details>
+<summary> Show details of the demo with multiple images in a custom folder</summary>
+
+The script then executes the inference of the model on the downloaded images. 
+
+```bash
+# STEP 3: PREDICT IMAGES AS PRIVATE OR PUBLIC WITH MODEL
+#
+# Activate the conda environment. The command conda is the default one.
+# Some OS might not work with the command conda, and the command source can be used as an alternative
+conda activate image-privacy
+
+# Set the GPU number to use in a multi-GPU machine. The variable 
+# is not always needed, and depends on your machine/server
+CUDA_DEVICE=0
+
+CONFIG_FILE=s2p_v1.0.json
+
+CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py \
+    s2p.pth \
+    $CONFIG_FILE \
+    "."
+
+conda deactivate
+```
+
+The Python script receives three positional arguments as input strings:
+1. the trained model (filename with extension .pth)
+2. the configuration file
+3. the directory where the list of images are stored (*or* the image filename).
+
+The script currently supports the loading of .jpg and .png images, and automatically distinguishes between an input image and a directory.
+
+Note that [ResNet-50 pre-trained on Places365](resnet50_places365.pth.tar) is automatically downloaded from [http://places2.csail.mit.edu/models_places365/](http://places2.csail.mit.edu/models_places365/) and placed into the directory ``resources/``. 
+
+A custom data loader reads the images in the folder, and then the model predicts their privacy label (1: private, 0 public). 
+
+Predictions are saved into a .csv file ``demo_predictions.csv``, whose columns are:
+* image: filename of the image [str]
+* probability: probability of the predicted class based on the sigmoid function [float]
+* pred_class: predicted class (1: private, 0 public)  [float]
+
+</details>
+
+<details>
+<summary> Show details of the demo with a single image</summary>
+
+The script executes the inference of the model on an image provided as input. The following lines can be used directly on the command line of the terminal instead of running the bash script.  
+
+```bash
+# Activate the conda environment. The command conda is the default one.
+# Some OS might not work with the command conda, and the command source can be used as an alternative
+conda activate image-privacy
+
+# Set the GPU number to use in a multi-GPU machine. The variable 
+# is not always needed, and depends on your machine/server
+CUDA_DEVICE=0
+
+CONFIG_FILE=s2p_v1.0.json
+
+IMAGENAME=50039888078.jpg
+
+CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py s2p.pth $CONFIG_FILE $IMAGENAME
+
+conda deactivate
+```
+
+The Python script receives three positional arguments as input strings:
+1. the trained model (filename with extension .pth)
+2. the configuration file
+3. the image filename (*or* the directory where the list of images are stored)
+
+The script currently supports the loading of .jpg and .png images, and automatically distinguishes between an input image and a directory.
+
+Note that [ResNet-50 pre-trained on Places365](resnet50_places365.pth.tar) is automatically downloaded from [http://places2.csail.mit.edu/models_places365/](http://places2.csail.mit.edu/models_places365/) and placed into the directory ``resources/``. 
+
+A custom data loader reads the images in the folder, and then the model predicts their privacy label (1: private, 0 public). 
+
+Predictions are saved into a .csv file ``demo_predictions.csv``, whose columns are:
+* image: filename of the image [str]
+* probability: probability of the predicted class based on the sigmoid function [float]
+* pred_class: predicted class (1: private, 0 public)  [float]
+
+</details>
+
+**Reproducibility check**
+
+We provide the predictions of the model on the sampled images in the table below. 
+
+| image | probability | pred_class | 
+|-------|-------------|------------|
+| 35886895852.jpg | 0.5692839 | 1.0 |
+| 43830339314.jpg | 0.5559994 | 1.0 |
+| 47705667841.jpg | 0.7970571 | 1.0 |
+| 49196229738.jpg | 0.746452 | 1.0 |
+| 49834471323.jpg | 0.82996505 | 1.0 |
+| 50039888078.jpg | 0.98218954 | 0.0 |
+| 50252178257.jpg | 0.740997 | 0.0 |
+| 50583669162.jpg | 0.982347 | 0.0 |
+| 50789435118.jpg | 0.9788375 | 0.0 |
+
+#### Scripts to run training and testing pipelines 
 
 <details>
 <summary> Show instructions to run script for S2P as example </summary>
 
 Follow these instructions to run the script. 
 
-1. Modify the bash script ``scripts/run_s2p.sh`` with your own variables and settings:
+1. Modify the bash script [scripts/run_s2p.sh](scripts/run_s2p.sh) with your own variables and settings:
     1. Set ``IMAGEPRIVACY_DIR`` with your directory to the image privacy datasets
     2. Choose the dataset for the variable ``DATASET`` (either PrivacyAlert or IPD)
     3. Set the variable ``TRAINING_MODE`` based on the chosen dataset (original for PrivacyAlert, crossval for IPD)
