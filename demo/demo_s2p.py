@@ -35,6 +35,8 @@ sys.path.insert(0, dirlevel0)
 import numpy as np
 import pandas as pd
 
+from tqdm import tqdm
+
 import torch
 import torch.utils.data as data
 import torch.nn.functional as F
@@ -52,7 +54,7 @@ from srcs.utils import (
 
 #############################################################################
 
-IMGEXT=['.jpg','.png']
+IMGEXT=('.jpg','.png')
 
 class ImageData(data.Dataset):
     """Class for the image privacy datasets."""
@@ -74,7 +76,7 @@ class ImageData(data.Dataset):
         super(ImageData, self).__init__()
 
         self.data_dir = data_dir
-        self.imgs = load_image_list(data_dir)
+        self.imgs = self.load_image_list(data_dir)
 
         self.im_size = img_size
 
@@ -172,6 +174,8 @@ class DemoImageModels():
         df = pd.DataFrame(df_data)
 
         filename = 'demo_predictions.csv'
+
+        print(os.path.join(self.root_dir, "demo"))
 
         df.to_csv(
             os.path.join(self.root_dir, "demo", filename),
