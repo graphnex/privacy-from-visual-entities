@@ -45,7 +45,8 @@ from srcs.datasets.imageprivacy import load_image
 from srcs.logging_gnex import Logging
 from srcs.utils import (
     device,
-    print_model_parameters
+    print_model_parameters,
+    update_config_file
 )
 
 #############################################################################
@@ -418,8 +419,12 @@ if __name__ == "__main__":
     with open(args.config) as f:
         config = json.load(f)
 
-    # config = update_config_file(config, args)
-    # set_seed(config["params"]["seed"])
+    # Add dataset configurations
+    with open(os.path.join("configs", "datasets.json")) as f:
+        data_config = json.load(f)
+
+    config["paths"] = data_config["paths"]
+    # config["datasets"] = data_config["datasets"]
 
     processor = DemoImageModels(config, args.use_bce)
 

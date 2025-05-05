@@ -38,9 +38,9 @@ CUDA_DEVICE=0
 
 CONFIG_FILE=s2p_v1.0.json
 
-CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py \ 
-	s2p.pth \ 
-	$CONFIG_FILE \ 
+CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py \
+	s2p.pth \
+	$CONFIG_FILE \
 	"."
 
 conda deactivate
