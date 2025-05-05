@@ -28,7 +28,7 @@ In a similar way to semantic versioning for software, the semantic versioning us
 
 - **Repository:** https://github.com/graphnex/privacy-from-visual-entities
 - **Paper:** https://doi.org/10.48550/arXiv.2503.12464 
-- **Demo [optional]:** https://github.com/graphnex/privacy-from-visual-entities/demo
+- **Demo:** https://github.com/graphnex/privacy-from-visual-entities/demo
 
 ## Uses
 
@@ -121,12 +121,12 @@ The input image is resized to a resolution of 448×448 pixels and values are nor
 - **Patience for scheduling learning rate**: 10
 - **Minimum learning rate**: 1e-5
 - **Maximum learning rate**: 0.1
-- **weight_decay**: 0.0
+- **Weight decay**: 0.0
 - **Momentum** : 0.9
 - **Maximum traininig time before stopping**: 12 h
 - **Training mode** : crossval (pre-computed stratified K-Fold splits of the dataset)
 - **Fold ID** : 0
-- **Peeformance measure monitored for early stopping**: balanced_accuracy 
+- **Performance measure monitored for early stopping**: balanced_accuracy 
 - **use_bce** : false (use of the binary cross-entropy instead of the cross-entropy with 2 classes)
 
 The maximum number of epochs is set to 1,000, but the training stopped early if the learning rate is reduced to a value lower than 0.00001 or the training time lasted longer than 12 h. 
@@ -165,14 +165,14 @@ The model is evaluated using per-class precision, per-class recall, per-class F1
 
 First, the number of true positives (TP), false positives (FP), and false negatives (FN) are computed for each class 𝑦.
 
-For a given class, precision is the number of images correctly classified as class 𝑦 over the total number of images predicted as the class 𝑦: 
-𝑃𝑦 = 𝑇𝑃𝑦 /(𝑇𝑃𝑦 + 𝐹𝑃𝑦). 
+For a given class, precision is the number of images correctly classified as class 𝑦 over the total number of images predicted as the class $y$: 
+$P_y = TP_y /(TP_y + FP_y )$.
 
-Recall is the number of images correctly classified as class 𝑦 over the total number of images annotated as class 𝑦: 
-𝑅𝑦 = 𝑇𝑃𝑦 /(𝑇𝑃𝑦 + 𝐹𝑁𝑦). 
+Recall is the number of images correctly classified as class 𝑦 over the total number of images annotated as class $y$: 
+$R_y = TP_y /(TP_y + FN_y )$.
 
-Accuracy is the total number of images that are correctly classified as either public or private over the total number of images that are correctly classified, wrongly predicted (𝐹𝑃𝑦 ) and missed to be predicted (𝐹𝑁𝑦 ) with respect to the annotated class:
-$𝐴𝐶𝐶 = \Sum_𝑦 𝑇𝑃𝑦 /( \Sum_y (𝑇𝑃𝑦 + 𝐹𝑃𝑦 + 𝐹𝑁𝑦))$
+Accuracy is the total number of images that are correctly classified as either public or private over the total number of images that are correctly classified, wrongly predicted ($FP_y$ ) and missed to be predicted ($FN_y$) with respect to the annotated class:
+$𝐴𝐶𝐶 = \sum_𝑦 𝑇𝑃_𝑦 /( \sum_y (𝑇𝑃_𝑦 + 𝐹𝑃_𝑦 + 𝐹𝑁_𝑦))$
 
 Balanced accuracy is the main performance measure to better assess the class imbalance of the dataset, and is the average between the recall of the two classes. Similarly, overall precision is the average between the precision of the two classes. 
 
@@ -276,16 +276,6 @@ Additional libraries
 ```
 A Xompero, A. Cavallaro, "Learning Privacy from Visual Entities", Proceedings on Privacy Enhancing Technologies (PoPETs), vol. 2025, n.3, March 2025
 ```
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-{{ glossary | default("[More Information Needed]", true)}}
-
-## More Information [optional]
-
-{{ more_information | default("[More Information Needed]", true)}}
 
 ## Model Card Authors
 
