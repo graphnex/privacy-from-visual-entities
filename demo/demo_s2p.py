@@ -113,9 +113,7 @@ class DemoImageModels():
         use_bce=False
         ):
         # Paths
-        self.root_dir = config["paths"][
-            "root_dir"
-        ]  # directory of the repository
+        self.root_dir = dirlevel0  # directory of the repository
 
         self.config = config
 
@@ -126,7 +124,7 @@ class DemoImageModels():
         self.b_bce = use_bce
 
         self.log = Logging()
-        self.log.initialise(os.path.join(self.root_dir, "log.txt"))
+        self.log.initialise(os.path.join(self.root_dir, "demo", "log.txt"))
 
         #----------------------
         # config["net_params"]
@@ -174,8 +172,6 @@ class DemoImageModels():
         df = pd.DataFrame(df_data)
 
         filename = 'demo_predictions.csv'
-
-        print(os.path.join(self.root_dir, "demo"))
 
         df.to_csv(
             os.path.join(self.root_dir, "demo", filename),
