@@ -22,12 +22,12 @@
 #################################################################
 # STEP 2: DOWNLOAD AND EXTRACT MODEL IN CURRENT DEMO FOLDER
 #
-# wget https://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/s2p_PrivacyAlert_v1.0.0.zip
+# wget https://zenodo.org/records/15349470/files/s2p_PrivacyAlert_v1.0.0.zip
 
 # unzip -j s2p_PrivacyAlert_v1.0.0.zip trained_models/privacyalert/2-class/s2p/best_acc_s2p-original.pth -d .
 # mv best_acc_s2p-original.pth s2p.pth
 
-# unzip -j s2p_PrivacyAlert_v1.0.0.zip import/smartcameras-002/alessio/GraphNEx/GNN-privacy/configs/s2p_v1.0.json -d .
+# unzip -j s2p_PrivacyAlert_v1.0.0.zip configs/s2p_v1.0.json -d .
 
 #################################################################
 # STEP 3: PREDICT IMAGES AS PRIVATE OR PUBLIC WITH MODEL
