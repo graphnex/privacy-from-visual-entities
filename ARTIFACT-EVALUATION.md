@@ -30,7 +30,7 @@ Requested Badge: **Functional and Available**
 
 ## Description <a name="description"></a>
 
-This artifact contains the source code of the framework for training, testing, and evaluating the models for image privacy classification used in the article: A. Xompero and A. Cavallaro, "Learning Privacy from Visual Entities", Proceedings on Privacy Enhancing Technologies (PoPETs), Volume 2025, Issue 3, 2025 (to appear).
+This artifact contains the source code of the framework for training, testing, and evaluating the models for image privacy classification used in the article: A. Xompero and A. Cavallaro, "Learning Privacy from Visual Entities", Proceedings on Privacy Enhancing Technologies (PoPETs), Volume 2025, Issue 3, 2025.
 
 ### Security/Privacy Issues and Ethical Concerns <a name="security-ethical"></a>
 
@@ -93,8 +93,6 @@ For PicAlert and PrivacyAlert, only urls to the original locations in Flickr are
 
 **Disclaimer**: The datasets are originally provided by other sources and have been re-organised and curated for this work. Similar to the original datasets (PicAlert and PrivacyAlert), we provide the link to the images in the download scripts, however running the scripts can incur in the "429 Too Many Requests" status code. This makes the datasets hard to obtain from the original Flickr location, and thus impacting the testing of the reproducibility of the experiments. Moreover, owners of the photos on Flick could have removed the photos from the social media platform, resulting in less images than those used for training and testing the models in the article. This means that other researchers will need to privately request the current version of the datasets as used in the article to reproduce the results or make fair comparisons.
 
-**Note**: The following links to the curated image privacy data sets will be updated with the corresponding Zenodo links once the archives are uploaded in a Zenodo repository/record to comply with FAIR principles and Open Research.
-
 <details>
 <summary> Show details and instructions </summary>
 
@@ -145,7 +143,7 @@ The following instructions are for a Linux-based machine and use the shell termi
 
 ```bash
 # 1. Download the zip file ``curated_imageprivacy_datasets.zip``
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/curated_imageprivacy_datasets.zip
+wget https://zenodo.org/records/15348506/files/curated_imageprivacy_datasets.zip
 
 # 2. Extract the content of the zip file into a path of your choice. Recommendation: avoid storing the datasets under the same directory of this repository/artifact.
 cd <YOUR_DATA_PATH>
@@ -204,6 +202,8 @@ Here is an example of the final expected organisation of the images:
 
 </details>
 
+Zenodo record storing the curated datasets (compliance with FAIR principles and Open Research): [https://doi.org/10.5281/zenodo.15348506](https://doi.org/10.5281/zenodo.15348506) 
+
 ### Pre-computed visual entitities <a name="data-visual-entities"></a>
 
 Some of the models run their pipeline end-to-end with the images as input, whereas other models require different or additional inputs.
@@ -219,11 +219,13 @@ The table below provides the link to the archive file for each dataset and each 
 
 | Type | PicAlert | VISPR | PrivacyAlert | IPD |
 |------|----------|-------|--------------|-----|
-| Scenes | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip) (105 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip) (82 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip) (26 MB) | N/A |
-| Objects | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip) (10 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip) (8 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip) (3 MB) | N/A |
-| Graph data | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip) (9 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip) (7 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip) (3 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip) (22 KB) |
+| Scenes | [link](https://zenodo.org/records/15348506/files/scenes_picalert.zip) (105 MB) | [link](https://zenodo.org/records/15348506/files/scenes_VISPR.zip) (82 MB) | [link](https://zenodo.org/records/15348506/files/scenes_privacyalert.zip) (26 MB) | N/A |
+| Objects | [link](https://zenodo.org/records/15348506/files/objects_picalert.zip) (10 MB) | [link](https://zenodo.org/records/15348506/files/objects_VISPR.zip) (8 MB) | [link](https://zenodo.org/records/15348506/files/objects_privacyalert.zip) (3 MB) | N/A |
+| Graph data | [link](https://zenodo.org/records/15348506/files/graphdata_picalert.zip) (9 MB) | [link](https://zenodo.org/records/15348506/files/graphdata_VISPR.zip) (7 MB) | [link](https://zenodo.org/records/15348506/files/graphdata_privacyalert.zip) (3 MB) | [link](https://zenodo.org/records/15348506/files/graphdata_IPD.zip) (22 KB) |
 
 These files should be unzipped in the folder ``/resources/`` and follow the structure below.
+
+Zenodo record storing the pre-computed visual entities (compliance with FAIR principles and Open Research): [https://doi.org/10.5281/zenodo.15348506](https://doi.org/10.5281/zenodo.15348506) 
 
 <details>
 <summary> Show structure </summary>
@@ -307,32 +309,40 @@ These files should be unzipped in the folder ``/resources/`` and follow the stru
 </details>
 
 Example of bash code to download the ZIP files of the visual entities and unzip them in the folder ``resources/``. 
-The following lines are expected to be run from the repository working directory.
+
+You can run the bash script [scripts/download_precomputed_visual_entities.sh](scripts/download_precomputed_visual_entities.sh) from your terminal
+```bash
+source scripts/download_precomputed_visual_entities.sh
+```
+The script takes about 5 minutes to run a Linux-based server machine with a fast Internet connection or about 30 minutes with a laptop and home-based Internet connection via WiFi.
+
+
+Alternatively, the following lines are expected to be run from the repository working directory.
 
 ```bash
 # Download and extract the scene probabilities for each dataset
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip
+wget https://zenodo.org/records/15348506/files/scenes_picalert.zip
+wget https://zenodo.org/records/15348506/files/scenes_VISPR.zip
+wget https://zenodo.org/records/15348506/files/scenes_privacyalert.zip
 
 unzip scenes_picalert.zip -d resources/
 unzip scenes_VISPR.zip -d resources/
 unzip scenes_privacyalert.zip -d resources/
 
 # Download and extract the detected objects for each dataset
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip
+wget https://zenodo.org/records/15348506/files/objects_picalert.zip
+wget https://zenodo.org/records/15348506/files/objects_VISPR.zip
+wget https://zenodo.org/records/15348506/files/objects_privacyalert.zip
 
 unzip objects_picalert.zip -d resources/
 unzip objects_VISPR.zip -d resources/
 unzip objects_privacyalert.zip -d resources/
 
 # Download and extract the pre-computed graph data for each dataset
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip
+wget https://zenodo.org/records/15348506/files/graphdata_picalert.zip
+wget https://zenodo.org/records/15348506/files/graphdata_VISPR.zip
+wget https://zenodo.org/records/15348506/files/graphdata_privacyalert.zip
+wget https://zenodo.org/records/15348506/files/graphdata_IPD.zip
 
 unzip graphdata_picalert.zip -d resources/
 unzip graphdata_VISPR.zip -d resources/
@@ -345,29 +355,27 @@ unzip graphdata_IPD.zip -d resources/
 This section includes the link to a zip file related to each model trained in the article. 
 Models can be extracted in the folder ``trained_models`` and then used within the testing pipeline to obtain the predictions on the testing sets of the datasets avoiding to re-train the model for scratch.
 
-**Disclaimer** Trained models are not yet available (empty links) and under preparation for release on a Zenodo record to comply with FAIR principles and Open Research.
+Zenodo record storing the trained models (compliance with FAIR principles and Open Research): [https://doi.org/10.5281/zenodo.15349470](https://doi.org/10.5281/zenodo.15349470) 
 
 <details>
 <summary> Show table of models and links for GIP and GPA analysis (Section 6.7, Tables 3 and 4) </summary>
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| GIP   | 1.0     | [link]()     | [link]() |
-| GIP   | 2.0     | [link]()     | [link]() |
-| GIP   | 2.1     | [link]()     | [link]() |
-| GIP   | 2.2     | [link]()     | [link]() |
-| GIP   | 2.3     | [link]()     | [link]() |
-| GIP   | 2.4     | [link]()     | [link]() |
-| GIP   | 2.5     | [link]()     | [link]() |
-| GPA   | 1.0     | [link]()     | [link]() |
-| GPA   | 1.1     | [link]()     | [link]() |
-| GPA   | 1.2     | [link]()     | [link]() |
-| GPA   | 1.3     | [link]()     | [link]() |
-| GPA   | 1.4     | [link]()     | [link]() |
-| GPA   | 1.5     | [link]()     | [link]() |
-| GPA   | 1.6     | [link]()     | [link]() |
-| GPA   | 1.7     | [link]()     | [link]() |
-| GPA   | 1.8     | [link]()     | [link]() |
+| GIP   | 2.0     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v0.0.0.zip) (1.8 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v0.0.0.zip) (1.7 GB) |
+| GIP   | 2.1     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v1.0.0.zip) (1.9 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v1.0.0.zip) (1.9 GB) |
+| GIP   | 2.2     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v2.0.0.zip) (1.7 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v2.0.0.zip) (1.7 GB) |
+| GIP   | 2.3     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v3.0.0.zip) (1.7 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v3.0.0.zip) (1.7 GB) |
+| GIP   | 2.5     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v4.0.0.zip) (1.9 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v5.0.0.zip) (1.9 GB) |
+| GPA   | 1.0     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.0.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.0.0.zip) (90.6 MB) |
+| GPA   | 1.1     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.1.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.1.0.zip) (90.6 MB) |
+| GPA   | 1.2     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.2.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.2.0.zip) (90.7 MB) |
+| GPA   | 1.3     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.3.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.3.0.zip) (90.7 MB) |
+| GPA   | 1.4     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.4.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.4.0.zip) (90.6 MB) |
+| GPA   | 1.5     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.5.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.5.0.zip) (90.6 MB) |
+| GPA   | 1.6     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.6.0.zip) (35.4 kB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.6.0.zip) (112.3 kB) |
+| GPA   | 1.7     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.7.0.zip) (34.2 kB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.7.0.zip) (112.3 kB) |
+| GPA   | 1.8     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.8.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.8.0.zip) (90.7 MB) |
 
 </details>
 
@@ -376,28 +384,27 @@ Models can be extracted in the folder ``trained_models`` and then used within th
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| MLP-I   | 1.0     | [link]()     | [link]() |
-| MLP   | 1.0     | [link]()     | [link]() |
-| GA-MLP   | 1.0     | [link]()     | [link]() |
-| GIP   | 2.2     | [link]()     | [link]() |
-| GPA   | 1.4     | [link]()     | [link]() |
-| S2P   | 1.0     | [link]()     | [link]() |
+| MLP-I   | 1.0     | [link](https://zenodo.org/records/15349470/files/imlp_PrivacyAlert_1.0.0.zip) (366.8 MB) | [link](https://zenodo.org/records/15349470/files/imlp_IPD_1.0.0.zip) (367.4 MB) |
+| MLP   | 1.0     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.0.0.zip) (167.7 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.0.0.zip) (147.0 kB) |
+| GA-MLP   | 1.4     | [link](https://zenodo.org/records/15349470/files/ga_mlp_PrivacyAlert_v1.4.0.zip) (42.7 kB) | [link](https://zenodo.org/records/15349470/files/ga_mlp_IPD_v1.4.0.zip) (158.5 kB) |
+| GIP   | 2.2     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v2.0.0.zip) (1.7 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v2.0.0.zip) (1.7 GB) |
+| GPA   | 1.4     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.4.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.4.0.zip) (90.6 MB) |
+| S2P   | 1.0     | [link](https://zenodo.org/records/15349470/files/s2p_PrivacyAlert_v1.0.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/s2p_IPD_v1.0.0.zip) (90.6 MB) |
 
 </details>
 
 <details>
 <summary> Show table of models and links for additional comparisons (Appendix C, Table 7) </summary>
 
-
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| TAGSVM   | 1.0     | [link]()     | [link]() |
-| RNP2SVM   | 1.0     | [link]()     | [link]() |
-| RNP2SVM   | 1.2     | [link]()     | [link]() |
-| RNP2FT   | 1.0     | [link]()     | [link]() |
-| S2P   | 1.0     | [link]()     | [link]() |
-| S2P_MLP   | 1.0     | [link]()     | [link]() |
-| S2P_MLP   | 1.1     | [link]()     | [link]() |
+| TAGSVM   | 1.0 | [link](https://zenodo.org/records/15349470/files/tagsvm_PrivacyAlert_v1.0.0.zip) (12.7 kB) | [link](https://zenodo.org/records/15349470/files/tagsvm_IPD_v1.0.0.zip) (12.9 kB) |
+| RNP2SVM  | 1.0 | [link](https://zenodo.org/records/15349470/files/rnp2svm_PrivacyAlert_v1.0.0.zip) (9.0 kB) | [link](https://zenodo.org/records/15349470/files/rnp2svm_IPD_v1.0.0.zip) (5.3 kB) |
+| RNP2SVM  | 1.2 | [link](https://zenodo.org/records/15349470/files/rnp2svm_PrivacyAlert_v1.2.0.zip) (5.4 kB) | [link](https://zenodo.org/records/15349470/files/rnp2svm_IPD_v1.2.0.zip) (5.3 kB) |
+| RNP2FT   | 1.0 | [link](https://zenodo.org/records/15349470/files/rnp2ftp_PrivacyAlert_v1.0.0.zip) (87.6 MB) | [link](https://zenodo.org/records/15349470/files/rnp2ftp_IPD_v1.0.0.zip) (87.9 MB) |
+| S2P      | 1.0 | [link](https://zenodo.org/records/15349470/files/s2p_PrivacyAlert_v1.0.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/s2p_IPD_v1.0.0.zip) (90.6 MB) |
+| S2P_MLP  | 1.0 | [link](https://zenodo.org/records/15349470/files/s2p_mlp_PrivacyAlert_v1.0.0.zip) (90.7 MB) | [link](https://zenodo.org/records/15349470/files/s2p_mlp_IPD_v1.0.0.zip) (90.7 MB) |
+| S2P_MLP  | 1.1 | [link](https://zenodo.org/records/15349470/files/s2p_mlp_PrivacyAlert_v1.1.0.zip) (90.8 MB) | [link](https://zenodo.org/records/15349470/files/s2p_mlp_IPD_v1.1.0.zip) (90.8 MB) |
 
 </details>
 
@@ -406,57 +413,26 @@ Models can be extracted in the folder ``trained_models`` and then used within th
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| MLP   | 1.0     | [link]()     | [link]() |
-| MLP   | 1.1     | [link]()     | [link]() |
-| MLP   | 1.2     | [link]()     | [link]() |
-| MLP   | 1.3     | [link]()     | [link]() |
-| MLP   | 1.4     | [link]()     | [link]() |
-| MLP   | 1.5     | [link]()     | [link]() |
+| MLP   | 1.0     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.0.0.zip) (167.7 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.0.0.zip) (147.0 kB) |
+| MLP   | 1.1     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.1.0.zip) (176.6 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.1.0.zip) (163.7 kB) |
+| MLP   | 1.2     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.2.0.zip) (171.1 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.2.0.zip) (148.0 kB) |
+| MLP   | 1.3     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.3.0.zip) (179.6 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.3.0.zip) (164.4 kB) |
+| MLP   | 1.4     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.4.0.zip) (167.5 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.4.0.zip) (143.0 kB) |
+| MLP   | 1.5     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.5.0.zip) (177.0 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.5.0.zip) (161.2 kB) |
+
+Note that we provide only the trained models with feature normalisation based on the results obtained in Table 8.
 
 </details>
 
 <details>
-<summary> Show table of models and links for hyperparameter analysis (Appendix D.2, Figure 9) </summary>
+<summary> Show table of models and links for hyper-parameter analysis (Appendix D.2, Figure 9) </summary>
 
-| Model | Configuration | PrivacyAlert | IPD |
-|-------|---------|--------------|-----|
-| MLP   | 2.0     | [link]()     | [link]() |
-| MLP   | 2.1     | [link]()     | [link]() |
-| MLP   | 2.2     | [link]()     | [link]() |
-| MLP   | 2.3     | [link]()     | [link]() |
-| MLP   | 2.4     | [link]()     | [link]() |
-| MLP   | 2.5     | [link]()     | [link]() |
-| MLP   | 2.6     | [link]()     | [link]() |
-| MLP   | 2.7     | [link]()     | [link]() |
-| MLP   | 2.8     | [link]()     | [link]() |
-| MLP   | 2.9     | [link]()     | [link]() |
-| MLP   | 2.10     | [link]()     | [link]() |
-| MLP   | 2.11     | [link]()     | [link]() |
-| MLP   | 2.12     | [link]()     | [link]() |
-| MLP   | 2.13     | [link]()     | [link]() |
-| MLP   | 2.14     | [link]()     | [link]() |
-| MLP   | 2.15     | [link]()     | [link]() |
-| MLP   | 2.16     | [link]()     | [link]() |
-| MLP   | 2.17     | [link]()     | [link]() |
-| MLP   | 2.18     | [link]()     | [link]() |
-| MLP   | 2.19     | [link]()     | [link]() |
-| MLP   | 2.20     | [link]()     | [link]() |
-| MLP   | 2.21     | [link]()     | [link]() |
-| MLP   | 2.22     | [link]()     | [link]() |
-| MLP   | 2.23     | [link]()     | [link]() |
-| MLP   | 2.24     | [link]()     | [link]() |
-| MLP   | 2.25     | [link]()     | [link]() |
-| MLP   | 2.26     | [link]()     | [link]() |
-| MLP   | 2.27     | [link]()     | [link]() |
-| MLP   | 2.28     | [link]()     | [link]() |
-| MLP   | 2.29     | [link]()     | [link]() |
-| MLP   | 2.30     | [link]()     | [link]() |
-| MLP   | 2.31     | [link]()     | [link]() |
-| MLP   | 2.32     | [link]()     | [link]() |
-| MLP   | 2.33     | [link]()     | [link]() |
-| MLP   | 2.34     | [link]()     | [link]() |
-| MLP   | 2.35     | [link]()     | [link]() |
-| MLP   | 2.36     | [link]()     | [link]() |
+| Model | PrivacyAlert | IPD |
+|-------|--------------|-----|
+| MLP   | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_hyperparameter_analysis.zip) (15.9 MB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_hyperparameter_analysis.zip) (79.1 MB) |
+
+Each archive has 37 .zip files, one for each configuration of the hyper-parameter analysis. 
+These archives are meant only for reproducibility checks and are not expected to be used for future comparisons. 
 
 </details>
 
@@ -503,16 +479,167 @@ python -m pip install ultralytics
 
 ### Testing the Environment <a name="testing-environment"></a>
 
-No specific tests currently available.
+No specific tests currently available. We provide a demo to test one of the trained models with some images sampled from PrivacyAlert. We also provide bash scripts in the folder ``scripts/`` that other researchers can use to run the training and testing pipelines for each model, and evaluate the results. 
 
-We provide bash scripts in the folder ``scripts/`` that other researchers can use to run the training and testing pipeline for each model, and evaluate the results. 
+#### Demo with S2P and sample images from PrivacyAlert
+
+The demo is located in the directory ``demo`` and containes a bash script [demo/run_demo.sh](demo/run_demo.sh) to run the demo provided in the Python file [demo/demo_s2p.py](demo/demo_s2p.py) with the S2P model, trained on PrivacyAlert, on some images of PrivacyAlert. 
+
+The bash script of the demo can be run from a terminal and the repository directory as follows:
+```bash
+cd demo/
+
+source run_demo.sh
+```
+
+<details>
+<summary> Show preliminary steps (download of images and model)</summary>
+
+The demo automatically downloads a list of images from the source location on Flickr in the demo directory. These images correspond to some of the images shown in the [paper](https://doi.org/10.48550/arXiv.2503.12464) (Sec.6.10, Fig.7, page 13).
+```bash
+# STEP 1: DOWNLOAD IMAGES FOR DEMO
+#
+# Download selected images from PrivacyAlert (as shown in the paper, Sec.6.10) in the current directory
+#
+# When PrivacyAlert was collected, these images were licensed under Public Domain. 
+# Please verify if the user changed the licence when downloading these images.
+
+wget https://live.staticflickr.com/65535/50039888078_88fb5d4722_c.jpg -O  50039888078.jpg
+wget https://live.staticflickr.com/65535/50252178257_4e69f47eac_c.jpg -O  50252178257.jpg
+wget https://live.staticflickr.com/65535/50789435118_4c012e37c1_c.jpg -O  50789435118.jpg
+wget https://live.staticflickr.com/65535/50583669162_77829f45af_c.jpg -O  50583669162.jpg
+wget https://live.staticflickr.com/65535/49196229738_3aa9ea88f8_c.jpg -O  49196229738.jpg
+wget https://live.staticflickr.com/65535/47705667841_00724f3a60_c.jpg -O  47705667841.jpg
+wget https://live.staticflickr.com/1887/43830339314_f317a8e1c9_c.jpg  -O  43830339314.jpg
+wget https://live.staticflickr.com/4305/35886895852_c4f26ed6f9_c.jpg  -O  35886895852.jpg
+wget https://live.staticflickr.com/65535/49834471323_2a4fd949b1_c.jpg -O  49834471323.jpg
+```
+
+The ZIP archive with the weights of the model S2P trained on PrivacyAlert is downloaded and extracted in the current directory along with the configuration file. 
+```bash
+# STEP 2: DOWNLOAD AND EXTRACT MODEL IN CURRENT DEMO FOLDER
+#
+wget https://zenodo.org/records/15349470/files/s2p_PrivacyAlert_v1.0.0.zip
+
+# extract the trained model
+unzip -j s2p_PrivacyAlert_v1.0.0.zip trained_models/privacyalert/2-class/s2p/best_acc_s2p-original.pth -d .
+mv best_acc_s2p-original.pth s2p.pth # rename model for simplicity
+
+# extract also the configuration file
+unzip -j s2p_PrivacyAlert_v1.0.0.zip configs/s2p_v1.0.json -d .
+```
+
+</details>
+
+<details>
+<summary> Show details of the demo with multiple images in a custom folder</summary>
+
+The script then executes the inference of the model on the downloaded images. 
+
+```bash
+# STEP 3: PREDICT IMAGES AS PRIVATE OR PUBLIC WITH MODEL
+#
+# Activate the conda environment. The command conda is the default one.
+# Some OS might not work with the command conda, and the command source can be used as an alternative
+conda activate image-privacy
+
+# Set the GPU number to use in a multi-GPU machine. The variable 
+# is not always needed, and depends on your machine/server
+CUDA_DEVICE=0
+
+CONFIG_FILE=s2p_v1.0.json
+
+CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py \
+    s2p.pth \
+    $CONFIG_FILE \
+    "."
+
+conda deactivate
+```
+
+The Python script receives three positional arguments as input strings:
+1. the trained model (filename with extension .pth)
+2. the configuration file
+3. the directory where the list of images are stored (*or* the image filename).
+
+The script currently supports the loading of .jpg and .png images, and automatically distinguishes between an input image and a directory.
+
+Note that [ResNet-50 pre-trained on Places365](resnet50_places365.pth.tar) is automatically downloaded from [http://places2.csail.mit.edu/models_places365/](http://places2.csail.mit.edu/models_places365/) and placed into the directory ``resources/``. 
+
+A custom data loader reads the images in the folder, and then the model predicts their privacy label (1: private, 0 public). 
+
+Predictions are saved into a .csv file ``demo_predictions.csv``, whose columns are:
+* image: filename of the image [str]
+* probability: probability of the predicted class based on the sigmoid function [float]
+* pred_class: predicted class (1: private, 0 public)  [float]
+
+</details>
+
+<details>
+<summary> Show details of the demo with a single image</summary>
+
+The script executes the inference of the model on an image provided as input. The following lines can be used directly on the command line of the terminal instead of running the bash script.  
+
+```bash
+# Activate the conda environment. The command conda is the default one.
+# Some OS might not work with the command conda, and the command source can be used as an alternative
+conda activate image-privacy
+
+# Set the GPU number to use in a multi-GPU machine. The variable 
+# is not always needed, and depends on your machine/server
+CUDA_DEVICE=0
+
+CONFIG_FILE=s2p_v1.0.json
+
+IMAGENAME=50039888078.jpg
+
+CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python demo_s2p.py s2p.pth $CONFIG_FILE $IMAGENAME
+
+conda deactivate
+```
+
+The Python script receives three positional arguments as input strings:
+1. the trained model (filename with extension .pth)
+2. the configuration file
+3. the image filename (*or* the directory where the list of images are stored)
+
+The script currently supports the loading of .jpg and .png images, and automatically distinguishes between an input image and a directory.
+
+Note that [ResNet-50 pre-trained on Places365](resnet50_places365.pth.tar) is automatically downloaded from [http://places2.csail.mit.edu/models_places365/](http://places2.csail.mit.edu/models_places365/) and placed into the directory ``resources/``. 
+
+A custom data loader reads the images in the folder, and then the model predicts their privacy label (1: private, 0 public). 
+
+Predictions are saved into a .csv file ``demo_predictions.csv``, whose columns are:
+* image: filename of the image [str]
+* probability: probability of the predicted class based on the sigmoid function [float]
+* pred_class: predicted class (1: private, 0 public)  [float]
+
+</details>
+
+**Reproducibility check**
+
+We provide the predictions of the model on the sampled images in the table below. 
+
+| image | probability | pred_class | 
+|-------|-------------|------------|
+| 35886895852.jpg | 0.5692839 | 1.0 |
+| 43830339314.jpg | 0.5559994 | 1.0 |
+| 47705667841.jpg | 0.7970571 | 1.0 |
+| 49196229738.jpg | 0.746452 | 1.0 |
+| 49834471323.jpg | 0.82996505 | 1.0 |
+| 50039888078.jpg | 0.98218954 | 0.0 |
+| 50252178257.jpg | 0.740997 | 0.0 |
+| 50583669162.jpg | 0.982347 | 0.0 |
+| 50789435118.jpg | 0.9788375 | 0.0 |
+
+#### Scripts to run training and testing pipelines 
 
 <details>
 <summary> Show instructions to run script for S2P as example </summary>
 
 Follow these instructions to run the script. 
 
-1. Modify the bash script ``scripts/run_s2p.sh`` with your own variables and settings:
+1. Modify the bash script [scripts/run_s2p.sh](scripts/run_s2p.sh) with your own variables and settings:
     1. Set ``IMAGEPRIVACY_DIR`` with your directory to the image privacy datasets
     2. Choose the dataset for the variable ``DATASET`` (either PrivacyAlert or IPD)
     3. Set the variable ``TRAINING_MODE`` based on the chosen dataset (original for PrivacyAlert, crossval for IPD)
@@ -541,6 +668,16 @@ python srcs/main.py                       \  #
 conda deactivate
 ```
 
+Instead of using the bash script, the training pipeline can be run with the following command lines from the terminal (arguments are used as an example):
+```bash
+conda activate graphnex-gnn
+
+python srcs/main.py --root_dir "." --dataset "PrivacyAlert" --config "configs/s2p_v1.0.0.json" --mode "training" --training_mode "original"
+
+conda deactivate
+```
+
+
 Segment for the testing pipeline:
 ```bash
 # Make sure to run the pipeline within the created conda environment
@@ -556,6 +693,15 @@ python srcs/main.py                       \  #
    --split_mode            "test"         \  # What data split to test (e.g., train, val, test)
    --model_mode            "best"            # What mode to use for testing: best model based on early stop and validation split (best), or the model saved at the last epoch (last)
 
+
+conda deactivate
+```
+
+Instead of using the bash script, the testing pipeline can be run with the following command lines from the terminal (arguments are used as an example):
+```bash
+conda activate graphnex-gnn
+
+python srcs/main.py --root_dir "." --dataset "PrivacyAlert" --config "configs/s2p_v1.0.0.json" --mode "testing" --training_mode "original" --split_mode "test" --model_mode "best"
 
 conda deactivate
 ```
@@ -612,8 +758,8 @@ This experiment reproduces the results presented in Table 3 of the article, Sec.
 Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment1.sh`` by placing the path to the folder where you downloaded the datasets.  
-2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file [scripts/run_experiment1.sh](scripts/run_experiment1.sh) by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file [configs/datasets.json](configs/datasets.json).
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment1.sh``
 
@@ -628,8 +774,8 @@ This experiment reproduces the results presented in Table 4 of the article, Sec.
 The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment2.sh`` by placing the path to the folder where you downloaded the datasets.  
-2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file [scripts/run_experiment2.sh](scripts/run_experiment2.sh) by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file [configs/datasets.json](configs/datasets.json).
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment2.sh``
 
@@ -644,8 +790,8 @@ This experiment reproduces the results presented in Table 5 of the article, Sec.
 The predictions and classification performance .csv files occupy less than 1 MB.  Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file ``source scripts/run_experiment3.sh`` by placing the path to the folder where you downloaded the datasets.  
-2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file ``configs/datasets.json``.
+1. Modify the variable ``IMAGEPRIVACY_DIR`` in the file [scripts/run_experiment3.sh](scripts/run_experiment3.sh) by placing the path to the folder where you downloaded the datasets.  
+2. Place the path to the folder where you downloaded the datasets in the field ``data_dir`` of the file [configs/datasets.json](configs/datasets.json).
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment3.sh``
 
@@ -660,8 +806,8 @@ This experiment reproduces the results presented in Table 7 of the article (Appe
 Running this script takes approximately 15 minutes. The predictions and classification performance .csv files occupy less than 1 MB. The largest model, stored in the ``/trained_models/`` folder after unzipping, occupies 200 MB. Each model is unzipped from its corresponding archive into the directory ``trained_models/<dataset_name>/2-class/<model_name>``. This directory is removed after running each model. 
 
 Running instructions:
-1. In the file ``source scripts/run_experiment4.sh``, modify the variable ``IMAGEPRIVACY_DIR`` by placing the path to the folder where you downloaded the datasets.
-2. In the file ``configs/datasets.json``, alos place the path to the folder where you downloaded the datasets in the field ``data_dir``.
+1. In the file [scripts/run_experiment4.sh](scripts/run_experiment4.sh), modify the variable ``IMAGEPRIVACY_DIR`` by placing the path to the folder where you downloaded the datasets.
+2. In the file [configs/datasets.json](configs/datasets.json), alss place the path to the folder where you downloaded the datasets in the field ``data_dir``.
 3. Open the terminal in the working directory of the repository.
 4. Run: ``source scripts/run_experiment4.sh``
 
@@ -686,8 +832,8 @@ This artifact (source code) is a general framework that contains:
 Other researchers can:
 * reuse the full framework to re-train and evaluate the already provided models based on our configurations (see ``configs/*``);
 * train and evaluate the models with new configurations for comparison and optimisation by creating customised config files;
-* add, train, and test new models to the framework (see ``srcs/nets/*.py`` and ``srcs/load_net.py``);
-* add new datasets following the format of the curated datasets and corresponding loading modules (see for example ``srcs/datasets/imageprivacy.py``, ``srcs/datasets/privacyalert_graph.py``, ``srcs/datasets/wrapper_imgs.py``, ``srcs/datasets/wrapper.py``);
+* add, train, and test new models to the framework (see ``srcs/nets/*.py`` and [srcs/load_net.py](srcs/load_net.py));
+* add new datasets following the format of the curated datasets and corresponding loading modules (see for example [srcs/datasets/imageprivacy.py](srcs/datasets/imageprivacy.py), [srcs/datasets/privacyalert_graph.py](srcs/datasets/privacyalert_graph.py), [srcs/datasets/wrapper_imgs.py](srcs/datasets/wrapper_imgs.py), [srcs/datasets/wrapper.py](srcs/datasets/wrapper.py));
 * extend the framework to multi-class classification and evaluation.
 
 Overall, the framework can enable a common and standard benchmark for image privacy classification. 

@@ -50,7 +50,7 @@ do
 
    M=${MODES[$ITER]}
 
-   unzip backups/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
+   unzip https://zenodo.org/records/15349470/files/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
 
    CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}_v1.$M.json
    #
@@ -105,7 +105,7 @@ do
 
    M=${MODES[$ITER]}
 
-   unzip backups/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
+   unzip https://zenodo.org/records/15349470/files/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
 
    CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}_v1.$M.json
    #

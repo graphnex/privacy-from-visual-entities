@@ -40,7 +40,7 @@ echo $MODEL_NAME
 
 for M in {0..5}
 do
-   unzip backups/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
+   unzip https://zenodo.org/records/15349470/files/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
 
    CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}/${MODEL_NAME}_v2.$M.json
    #
@@ -82,7 +82,7 @@ TRAINING_MODE='crossval' # crossval, final, original
 
 for M in {0..5}
 do
-   unzip backups/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
+   unzip https://zenodo.org/records/15349470/files/${MODEL_NAME}_${DATASET}_v1.$M.0.zip trained_models/$DATASET_low/2-class/${MODEL_NAME_b}/*
 
    CONFIG_FILE=$ROOT_DIR/configs/${MODEL_NAME}/${MODEL_NAME}_v2.$M.json
    #
