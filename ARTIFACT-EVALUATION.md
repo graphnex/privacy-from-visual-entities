@@ -143,7 +143,7 @@ The following instructions are for a Linux-based machine and use the shell termi
 
 ```bash
 # 1. Download the zip file ``curated_imageprivacy_datasets.zip``
-wget zenodo.org/records/15348506/files/curated_imageprivacy_datasets.zip
+wget https://zenodo.org/records/15348506/files/curated_imageprivacy_datasets.zip
 
 # 2. Extract the content of the zip file into a path of your choice. Recommendation: avoid storing the datasets under the same directory of this repository/artifact.
 cd <YOUR_DATA_PATH>
@@ -219,9 +219,9 @@ The table below provides the link to the archive file for each dataset and each 
 
 | Type | PicAlert | VISPR | PrivacyAlert | IPD |
 |------|----------|-------|--------------|-----|
-| Scenes | [link](zenodo.org/records/15348506/files/scenes_picalert.zip) (105 MB) | [link](zenodo.org/records/15348506/files/scenes_VISPR.zip) (82 MB) | [link](zenodo.org/records/15348506/files/scenes_privacyalert.zip) (26 MB) | N/A |
-| Objects | [link](zenodo.org/records/15348506/files/objects_picalert.zip) (10 MB) | [link](zenodo.org/records/15348506/files/objects_VISPR.zip) (8 MB) | [link](zenodo.org/records/15348506/files/objects_privacyalert.zip) (3 MB) | N/A |
-| Graph data | [link](zenodo.org/records/15348506/files/graphdata_picalert.zip) (9 MB) | [link](zenodo.org/records/15348506/files/graphdata_VISPR.zip) (7 MB) | [link](zenodo.org/records/15348506/files/graphdata_privacyalert.zip) (3 MB) | [link](zenodo.org/records/15348506/files/graphdata_IPD.zip) (22 KB) |
+| Scenes | [link](https://zenodo.org/records/15348506/files/scenes_picalert.zip) (105 MB) | [link](https://zenodo.org/records/15348506/files/scenes_VISPR.zip) (82 MB) | [link](https://zenodo.org/records/15348506/files/scenes_privacyalert.zip) (26 MB) | N/A |
+| Objects | [link](https://zenodo.org/records/15348506/files/objects_picalert.zip) (10 MB) | [link](https://zenodo.org/records/15348506/files/objects_VISPR.zip) (8 MB) | [link](https://zenodo.org/records/15348506/files/objects_privacyalert.zip) (3 MB) | N/A |
+| Graph data | [link](https://zenodo.org/records/15348506/files/graphdata_picalert.zip) (9 MB) | [link](https://zenodo.org/records/15348506/files/graphdata_VISPR.zip) (7 MB) | [link](https://zenodo.org/records/15348506/files/graphdata_privacyalert.zip) (3 MB) | [link](https://zenodo.org/records/15348506/files/graphdata_IPD.zip) (22 KB) |
 
 These files should be unzipped in the folder ``/resources/`` and follow the structure below.
 
@@ -355,29 +355,27 @@ unzip graphdata_IPD.zip -d resources/
 This section includes the link to a zip file related to each model trained in the article. 
 Models can be extracted in the folder ``trained_models`` and then used within the testing pipeline to obtain the predictions on the testing sets of the datasets avoiding to re-train the model for scratch.
 
-**Disclaimer** Trained models are not yet available (empty links) and under preparation for release on a Zenodo record to comply with FAIR principles and Open Research.
+Zenodo record storing the trained models (compliance with FAIR principles and Open Research): [https://doi.org/10.5281/zenodo.15349470](https://doi.org/10.5281/zenodo.15349470) 
 
 <details>
 <summary> Show table of models and links for GIP and GPA analysis (Section 6.7, Tables 3 and 4) </summary>
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| GIP   | 1.0     | [link]()     | [link]() |
-| GIP   | 2.0     | [link]()     | [link]() |
-| GIP   | 2.1     | [link]()     | [link]() |
-| GIP   | 2.2     | [link]()     | [link]() |
-| GIP   | 2.3     | [link]()     | [link]() |
-| GIP   | 2.4     | [link]()     | [link]() |
-| GIP   | 2.5     | [link]()     | [link]() |
-| GPA   | 1.0     | [link]()     | [link]() |
-| GPA   | 1.1     | [link]()     | [link]() |
-| GPA   | 1.2     | [link]()     | [link]() |
-| GPA   | 1.3     | [link]()     | [link]() |
-| GPA   | 1.4     | [link]()     | [link]() |
-| GPA   | 1.5     | [link]()     | [link]() |
-| GPA   | 1.6     | [link]()     | [link]() |
-| GPA   | 1.7     | [link]()     | [link]() |
-| GPA   | 1.8     | [link]()     | [link]() |
+| GIP   | 2.0     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v0.0.0.zip) (1.8 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v0.0.0.zip) (1.7 GB) |
+| GIP   | 2.1     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v1.0.0.zip) (1.9 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v1.0.0.zip) (1.9 GB) |
+| GIP   | 2.2     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v2.0.0.zip) (1.7 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v2.0.0.zip) (1.7 GB) |
+| GIP   | 2.3     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v3.0.0.zip) (1.7 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v3.0.0.zip) (1.7 GB) |
+| GIP   | 2.5     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v4.0.0.zip) (1.9 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v5.0.0.zip) (1.9 GB) |
+| GPA   | 1.0     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.0.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.0.0.zip) (90.6 MB) |
+| GPA   | 1.1     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.1.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.1.0.zip) (90.6 MB) |
+| GPA   | 1.2     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.2.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.2.0.zip) (90.7 MB) |
+| GPA   | 1.3     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.3.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.3.0.zip) (90.7 MB) |
+| GPA   | 1.4     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.4.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.4.0.zip) (90.6 MB) |
+| GPA   | 1.5     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.5.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.5.0.zip) (90.6 MB) |
+| GPA   | 1.6     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.6.0.zip) (35.4 kB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.6.0.zip) (112.3 kB) |
+| GPA   | 1.7     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.7.0.zip) (34.2 kB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.7.0.zip) (112.3 kB) |
+| GPA   | 1.8     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.8.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.8.0.zip) (90.7 MB) |
 
 </details>
 
@@ -386,28 +384,27 @@ Models can be extracted in the folder ``trained_models`` and then used within th
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| MLP-I   | 1.0     | [link]()     | [link]() |
-| MLP   | 1.0     | [link]()     | [link]() |
-| GA-MLP   | 1.0     | [link]()     | [link]() |
-| GIP   | 2.2     | [link]()     | [link]() |
-| GPA   | 1.4     | [link]()     | [link]() |
-| S2P   | 1.0     | [link]()     | [link]() |
+| MLP-I   | 1.0     | [link](https://zenodo.org/records/15349470/files/imlp_PrivacyAlert_1.0.0.zip) (366.8 MB) | [link](https://zenodo.org/records/15349470/files/imlp_IPD_1.0.0.zip) (367.4 MB) |
+| MLP   | 1.0     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.0.0.zip) (167.7 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.0.0.zip) (147.0 kB) |
+| GA-MLP   | 1.4     | [link](https://zenodo.org/records/15349470/files/ga_mlp_PrivacyAlert_v1.4.0.zip) (42.7 kB) | [link](https://zenodo.org/records/15349470/files/ga_mlp_IPD_v1.4.0.zip) (158.5 kB) |
+| GIP   | 2.2     | [link](https://zenodo.org/records/15349470/files/gip_PrivacyAlert_v2.0.0.zip) (1.7 GB) | [link](https://zenodo.org/records/15349470/files/gip_IPD_v2.0.0.zip) (1.7 GB) |
+| GPA   | 1.4     | [link](https://zenodo.org/records/15349470/files/gpa_PrivacyAlert_v1.4.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/gpa_IPD_v1.4.0.zip) (90.6 MB) |
+| S2P   | 1.0     | [link](https://zenodo.org/records/15349470/files/s2p_PrivacyAlert_v1.0.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/s2p_IPD_v1.0.0.zip) (90.6 MB) |
 
 </details>
 
 <details>
 <summary> Show table of models and links for additional comparisons (Appendix C, Table 7) </summary>
 
-
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| TAGSVM   | 1.0     | [link]()     | [link]() |
-| RNP2SVM   | 1.0     | [link]()     | [link]() |
-| RNP2SVM   | 1.2     | [link]()     | [link]() |
-| RNP2FT   | 1.0     | [link]()     | [link]() |
-| S2P   | 1.0     | [link]()     | [link]() |
-| S2P_MLP   | 1.0     | [link]()     | [link]() |
-| S2P_MLP   | 1.1     | [link]()     | [link]() |
+| TAGSVM   | 1.0 | [link](https://zenodo.org/records/15349470/files/tagsvm_PrivacyAlert_v1.0.0.zip) (12.7 kB) | [link](https://zenodo.org/records/15349470/files/tagsvm_IPD_v1.0.0.zip) (12.9 kB) |
+| RNP2SVM  | 1.0 | [link](https://zenodo.org/records/15349470/files/rnp2svm_PrivacyAlert_v1.0.0.zip) (9.0 kB) | [link](https://zenodo.org/records/15349470/files/rnp2svm_IPD_v1.0.0.zip) (5.3 kB) |
+| RNP2SVM  | 1.2 | [link](https://zenodo.org/records/15349470/files/rnp2svm_PrivacyAlert_v1.2.0.zip) (5.4 kB) | [link](https://zenodo.org/records/15349470/files/rnp2svm_IPD_v1.2.0.zip) (5.3 kB) |
+| RNP2FT   | 1.0 | [link](https://zenodo.org/records/15349470/files/rnp2ftp_PrivacyAlert_v1.0.0.zip) (87.6 MB) | [link](https://zenodo.org/records/15349470/files/rnp2ftp_IPD_v1.0.0.zip) (87.9 MB) |
+| S2P      | 1.0 | [link](https://zenodo.org/records/15349470/files/s2p_PrivacyAlert_v1.0.0.zip) (90.5 MB) | [link](https://zenodo.org/records/15349470/files/s2p_IPD_v1.0.0.zip) (90.6 MB) |
+| S2P_MLP  | 1.0 | [link](https://zenodo.org/records/15349470/files/s2p_mlp_PrivacyAlert_v1.0.0.zip) (90.7 MB) | [link](https://zenodo.org/records/15349470/files/s2p_mlp_IPD_v1.0.0.zip) (90.7 MB) |
+| S2P_MLP  | 1.1 | [link](https://zenodo.org/records/15349470/files/s2p_mlp_PrivacyAlert_v1.1.0.zip) (90.8 MB) | [link](https://zenodo.org/records/15349470/files/s2p_mlp_IPD_v1.1.0.zip) (90.8 MB) |
 
 </details>
 
@@ -416,57 +413,26 @@ Models can be extracted in the folder ``trained_models`` and then used within th
 
 | Model | Configuration | PrivacyAlert | IPD |
 |-------|---------|--------------|-----|
-| MLP   | 1.0     | [link]()     | [link]() |
-| MLP   | 1.1     | [link]()     | [link]() |
-| MLP   | 1.2     | [link]()     | [link]() |
-| MLP   | 1.3     | [link]()     | [link]() |
-| MLP   | 1.4     | [link]()     | [link]() |
-| MLP   | 1.5     | [link]()     | [link]() |
+| MLP   | 1.0     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.0.0.zip) (167.7 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.0.0.zip) (147.0 kB) |
+| MLP   | 1.1     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.1.0.zip) (176.6 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.1.0.zip) (163.7 kB) |
+| MLP   | 1.2     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.2.0.zip) (171.1 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.2.0.zip) (148.0 kB) |
+| MLP   | 1.3     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.3.0.zip) (179.6 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.3.0.zip) (164.4 kB) |
+| MLP   | 1.4     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.4.0.zip) (167.5 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.4.0.zip) (143.0 kB) |
+| MLP   | 1.5     | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_v0.5.0.zip) (177.0 kB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_v0.5.0.zip) (161.2 kB) |
+
+Note that we provide only the trained models with feature normalisation based on the results obtained in Table 8.
 
 </details>
 
 <details>
-<summary> Show table of models and links for hyperparameter analysis (Appendix D.2, Figure 9) </summary>
+<summary> Show table of models and links for hyper-parameter analysis (Appendix D.2, Figure 9) </summary>
 
-| Model | Configuration | PrivacyAlert | IPD |
-|-------|---------|--------------|-----|
-| MLP   | 2.0     | [link]()     | [link]() |
-| MLP   | 2.1     | [link]()     | [link]() |
-| MLP   | 2.2     | [link]()     | [link]() |
-| MLP   | 2.3     | [link]()     | [link]() |
-| MLP   | 2.4     | [link]()     | [link]() |
-| MLP   | 2.5     | [link]()     | [link]() |
-| MLP   | 2.6     | [link]()     | [link]() |
-| MLP   | 2.7     | [link]()     | [link]() |
-| MLP   | 2.8     | [link]()     | [link]() |
-| MLP   | 2.9     | [link]()     | [link]() |
-| MLP   | 2.10     | [link]()     | [link]() |
-| MLP   | 2.11     | [link]()     | [link]() |
-| MLP   | 2.12     | [link]()     | [link]() |
-| MLP   | 2.13     | [link]()     | [link]() |
-| MLP   | 2.14     | [link]()     | [link]() |
-| MLP   | 2.15     | [link]()     | [link]() |
-| MLP   | 2.16     | [link]()     | [link]() |
-| MLP   | 2.17     | [link]()     | [link]() |
-| MLP   | 2.18     | [link]()     | [link]() |
-| MLP   | 2.19     | [link]()     | [link]() |
-| MLP   | 2.20     | [link]()     | [link]() |
-| MLP   | 2.21     | [link]()     | [link]() |
-| MLP   | 2.22     | [link]()     | [link]() |
-| MLP   | 2.23     | [link]()     | [link]() |
-| MLP   | 2.24     | [link]()     | [link]() |
-| MLP   | 2.25     | [link]()     | [link]() |
-| MLP   | 2.26     | [link]()     | [link]() |
-| MLP   | 2.27     | [link]()     | [link]() |
-| MLP   | 2.28     | [link]()     | [link]() |
-| MLP   | 2.29     | [link]()     | [link]() |
-| MLP   | 2.30     | [link]()     | [link]() |
-| MLP   | 2.31     | [link]()     | [link]() |
-| MLP   | 2.32     | [link]()     | [link]() |
-| MLP   | 2.33     | [link]()     | [link]() |
-| MLP   | 2.34     | [link]()     | [link]() |
-| MLP   | 2.35     | [link]()     | [link]() |
-| MLP   | 2.36     | [link]()     | [link]() |
+| Model | PrivacyAlert | IPD |
+|-------|--------------|-----|
+| MLP   | [link](https://zenodo.org/records/15349470/files/mlp_PrivacyAlert_hyperparameter_analysis.zip) (15.9 MB) | [link](https://zenodo.org/records/15349470/files/mlp_IPD_hyperparameter_analysis.zip) (79.1 MB) |
+
+Each archive has 37 .zip files, one for each configuration of the hyper-parameter analysis. 
+These archives are meant only for reproducibility checks and are not expected to be used for future comparisons. 
 
 </details>
 
@@ -553,7 +519,7 @@ The ZIP archive with the weights of the model S2P trained on PrivacyAlert is dow
 ```bash
 # STEP 2: DOWNLOAD AND EXTRACT MODEL IN CURRENT DEMO FOLDER
 #
-wget https://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/s2p_PrivacyAlert_v1.0.0.zip
+wget https://zenodo.org/records/15349470/files/s2p_PrivacyAlert_v1.0.0.zip
 
 # extract the trained model
 unzip -j s2p_PrivacyAlert_v1.0.0.zip trained_models/privacyalert/2-class/s2p/best_acc_s2p-original.pth -d .
