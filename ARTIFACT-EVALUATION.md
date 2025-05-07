@@ -93,8 +93,6 @@ For PicAlert and PrivacyAlert, only urls to the original locations in Flickr are
 
 **Disclaimer**: The datasets are originally provided by other sources and have been re-organised and curated for this work. Similar to the original datasets (PicAlert and PrivacyAlert), we provide the link to the images in the download scripts, however running the scripts can incur in the "429 Too Many Requests" status code. This makes the datasets hard to obtain from the original Flickr location, and thus impacting the testing of the reproducibility of the experiments. Moreover, owners of the photos on Flick could have removed the photos from the social media platform, resulting in less images than those used for training and testing the models in the article. This means that other researchers will need to privately request the current version of the datasets as used in the article to reproduce the results or make fair comparisons.
 
-**Note**: The following links to the curated image privacy data sets will be updated with the corresponding Zenodo links once the archives are uploaded in a Zenodo repository/record to comply with FAIR principles and Open Research.
-
 <details>
 <summary> Show details and instructions </summary>
 
@@ -145,7 +143,7 @@ The following instructions are for a Linux-based machine and use the shell termi
 
 ```bash
 # 1. Download the zip file ``curated_imageprivacy_datasets.zip``
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/curated_imageprivacy_datasets.zip
+wget zenodo.org/records/15348506/files/curated_imageprivacy_datasets.zip
 
 # 2. Extract the content of the zip file into a path of your choice. Recommendation: avoid storing the datasets under the same directory of this repository/artifact.
 cd <YOUR_DATA_PATH>
@@ -204,6 +202,8 @@ Here is an example of the final expected organisation of the images:
 
 </details>
 
+Zenodo record storing the curated datasets (compliance with FAIR principles and Open Research): [https://doi.org/10.5281/zenodo.15348506](https://doi.org/10.5281/zenodo.15348506) 
+
 ### Pre-computed visual entitities <a name="data-visual-entities"></a>
 
 Some of the models run their pipeline end-to-end with the images as input, whereas other models require different or additional inputs.
@@ -219,11 +219,13 @@ The table below provides the link to the archive file for each dataset and each 
 
 | Type | PicAlert | VISPR | PrivacyAlert | IPD |
 |------|----------|-------|--------------|-----|
-| Scenes | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip) (105 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip) (82 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip) (26 MB) | N/A |
-| Objects | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip) (10 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip) (8 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip) (3 MB) | N/A |
-| Graph data | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip) (9 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip) (7 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip) (3 MB) | [link](http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip) (22 KB) |
+| Scenes | [link](zenodo.org/records/15348506/files/scenes_picalert.zip) (105 MB) | [link](zenodo.org/records/15348506/files/scenes_VISPR.zip) (82 MB) | [link](zenodo.org/records/15348506/files/scenes_privacyalert.zip) (26 MB) | N/A |
+| Objects | [link](zenodo.org/records/15348506/files/objects_picalert.zip) (10 MB) | [link](zenodo.org/records/15348506/files/objects_VISPR.zip) (8 MB) | [link](zenodo.org/records/15348506/files/objects_privacyalert.zip) (3 MB) | N/A |
+| Graph data | [link](zenodo.org/records/15348506/files/graphdata_picalert.zip) (9 MB) | [link](zenodo.org/records/15348506/files/graphdata_VISPR.zip) (7 MB) | [link](zenodo.org/records/15348506/files/graphdata_privacyalert.zip) (3 MB) | [link](zenodo.org/records/15348506/files/graphdata_IPD.zip) (22 KB) |
 
 These files should be unzipped in the folder ``/resources/`` and follow the structure below.
+
+Zenodo record storing the pre-computed visual entities (compliance with FAIR principles and Open Research): [https://doi.org/10.5281/zenodo.15348506](https://doi.org/10.5281/zenodo.15348506) 
 
 <details>
 <summary> Show structure </summary>
@@ -312,33 +314,35 @@ You can run the bash script [scripts/download_precomputed_visual_entities.sh](sc
 ```bash
 source scripts/download_precomputed_visual_entities.sh
 ```
+The script takes about 5 minutes to run a Linux-based server machine with a fast Internet connection or about 30 minutes with a laptop and home-based Internet connection via WiFi.
+
 
 Alternatively, the following lines are expected to be run from the repository working directory.
 
 ```bash
 # Download and extract the scene probabilities for each dataset
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_picalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_VISPR.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/scenes_privacyalert.zip
+wget zenodo.org/records/15348506/files/scenes_picalert.zip
+wget zenodo.org/records/15348506/files/scenes_VISPR.zip
+wget zenodo.org/records/15348506/files/scenes_privacyalert.zip
 
 unzip scenes_picalert.zip -d resources/
 unzip scenes_VISPR.zip -d resources/
 unzip scenes_privacyalert.zip -d resources/
 
 # Download and extract the detected objects for each dataset
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_picalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_VISPR.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/objects_privacyalert.zip
+wget zenodo.org/records/15348506/files/objects_picalert.zip
+wget zenodo.org/records/15348506/files/objects_VISPR.zip
+wget zenodo.org/records/15348506/files/objects_privacyalert.zip
 
 unzip objects_picalert.zip -d resources/
 unzip objects_VISPR.zip -d resources/
 unzip objects_privacyalert.zip -d resources/
 
 # Download and extract the pre-computed graph data for each dataset
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_picalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_VISPR.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_privacyalert.zip
-wget http://www.eecs.qmul.ac.uk/~ax300/privacy-from-visual-entities/graphdata_IPD.zip
+wget zenodo.org/records/15348506/files/graphdata_picalert.zip
+wget zenodo.org/records/15348506/files/graphdata_VISPR.zip
+wget zenodo.org/records/15348506/files/graphdata_privacyalert.zip
+wget zenodo.org/records/15348506/files/graphdata_IPD.zip
 
 unzip graphdata_picalert.zip -d resources/
 unzip graphdata_VISPR.zip -d resources/
