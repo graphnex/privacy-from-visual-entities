@@ -29,6 +29,7 @@ In a similar way to semantic versioning for software, the semantic versioning us
 - **Repository:** https://github.com/graphnex/privacy-from-visual-entities
 - **Paper:** https://doi.org/10.48550/arXiv.2503.12464 
 - **Demo:** https://github.com/graphnex/privacy-from-visual-entities/demo
+- **Weights:** https://zenodo.org/records/15349470/files/s2p_IPD_v1.0.0.zip
 
 ## Uses
 
