@@ -144,7 +144,7 @@ class DemoImageModels():
         print("\n{:s} parameters: ".format(config["net_name"]))
         print_model_parameters(self.net)
 
-        checkpoint = torch.load(fullpathname)
+        checkpoint = torch.load(fullpathname, weights_only=False)
         self.net.load_state_dict(checkpoint["net"])
         self.net = self.net.to(device)
         self.net.eval()
